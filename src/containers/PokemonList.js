@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import { Container} from '@chakra-ui/react';
+import { Container, Heading} from '@chakra-ui/react';
 import { gql, useQuery } from '@apollo/client';
 import Pagination from '../components/Pagination';
+import Card from '../components/Card'
 
 const GET_POKEMONS = gql`
   query pokemons($limit: Int, $offset: Int) {
@@ -36,8 +37,8 @@ export default function PokemonList() {
     limit: 20,
     offset: 1,
   })
-  const [nextVariables, setNextVariables] = useState({})
-  const [prevVariables, setPrevVariables] = useState({})
+  const [nextParams, setnextParams] = useState({})
+  const [prevParams, setprevParams] = useState({})
     
   const { loading, error, data } = useQuery(GET_POKEMONS, {
     variables: currentVariables,
@@ -46,35 +47,34 @@ export default function PokemonList() {
   useEffect(() => {
     if(!loading && data){
       setPokemonList(data.pokemons.results.map(pokemon => pokemon));
-      setNextVariables(getVariables(data.pokemons.next))
-      setPrevVariables(getVariables(data.pokemons.previous))
+      setnextParams(getVariables(data.pokemons.next))
+      setprevParams(getVariables(data.pokemons.previous))
     }
   }, [loading, data])
 
   function gotoNextPage() {
-    setCurrentVariables(nextVariables)
+    setCurrentVariables(nextParams)
   }
 
   function gotoPrevPage() {
-    setCurrentVariables(prevVariables)
+    setCurrentVariables(prevParams)
   }
 
   if (error) return `Error! ${error.message}`;
   console.log(data)
-  console.log(nextVariables)
-  console.log(prevVariables)
+  console.log(nextParams)
+  console.log(prevParams)
   return (
     <>
-      <Container maxW="960px" marginTop="75px" marginBottom="100px">
+      <Container maxW="960px" marginTop="75px" marginBottom="60px">
         {loading 
           ? 'Loading...' 
-          : <div p="6">
-              {pokemonList.map(p => (
-                <div key={p.name}>{p.name}</div>
-              ))}
+          : <div>
+              <Heading as="h2" color="#2E3131" textAlign="center">Wild Pokemon</Heading>
+              <Card pokemon={pokemonList}></Card>
               <Pagination
-                gotoNextPage={nextVariables.offset ? gotoNextPage : null}
-                gotoPrevPage={prevVariables.offset ? gotoPrevPage : null}
+                gotoNextPage={nextParams.offset ? gotoNextPage : null}
+                gotoPrevPage={prevParams.offset ? gotoPrevPage : null}
               />
             </div>
         }

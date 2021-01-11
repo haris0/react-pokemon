@@ -15,7 +15,7 @@ export default function Header(props){
       width="100%"
       wrap="wrap"
       padding="1rem"
-      color="teal"
+      bg="white"
       boxShadow="lg"
       marginBottom="15px"
       {... props}
