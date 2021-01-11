@@ -71,7 +71,7 @@ export default function PokemonList() {
           ? 'Loading...' 
           : <div>
               <Heading as="h2" color="#2E3131" textAlign="center">Wild Pokemon</Heading>
-              <Card pokemon={pokemonList}></Card>
+              <Card pokemonList={pokemonList}></Card>
               <Pagination
                 gotoNextPage={nextParams.offset ? gotoNextPage : null}
                 gotoPrevPage={prevParams.offset ? gotoPrevPage : null}

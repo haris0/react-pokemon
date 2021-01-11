@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from "./components/Header";
-import PokemonList from './containers/PokemonList';
+import AppRouter from './AppRouter'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import {extendTheme, ChakraProvider } from '@chakra-ui/react';
@@ -32,8 +31,7 @@ const client = new ApolloClient({
 ReactDOM.render(
   <ApolloProvider client={client}>
     <ChakraProvider theme={theme}>
-      <Header />
-      <PokemonList />
+      <AppRouter/>
     </ChakraProvider>
   </ApolloProvider>,
   document.getElementById('root')
