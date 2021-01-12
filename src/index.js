@@ -5,12 +5,6 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import {extendTheme, ChakraProvider } from '@chakra-ui/react';
 import {createBreakpoints} from "@chakra-ui/theme-tools"
-import {
-  ApolloClient,
-  ApolloProvider,
-  HttpLink,
-  InMemoryCache
-} from '@apollo/client'
 
 const breakpoints = createBreakpoints({
   sm: "320px",
@@ -21,19 +15,10 @@ const breakpoints = createBreakpoints({
 
 const theme = extendTheme({ breakpoints })
 
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri:'https://graphql-pokeapi.vercel.app/api/graphql'
-  })
-});
-
 ReactDOM.render(
-  <ApolloProvider client={client}>
     <ChakraProvider theme={theme}>
       <AppRouter/>
-    </ChakraProvider>
-  </ApolloProvider>,
+    </ChakraProvider>,
   document.getElementById('root')
 );
 

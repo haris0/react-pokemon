@@ -3,7 +3,7 @@ import {Box, Button, Flex, Image} from '@chakra-ui/react';
 import { Link } from "react-router-dom";
 import PokeBag from '../assets/PokeBag.png'
 
-export default function MyListButton({}) {
+export default function MyListButton() {
   return (
     <Flex
       justify="space-between"
@@ -22,6 +22,8 @@ export default function MyListButton({}) {
               bg="#23CBA7" 
               boxShadow="base"
               colorScheme="teal"
+              borderRadius="full"
+              padding="25px"
               leftIcon={<Image src={PokeBag} height="20px"/>}
               >My Pokemon
 

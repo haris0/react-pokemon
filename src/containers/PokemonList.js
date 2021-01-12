@@ -59,7 +59,9 @@ export default function PokemonList() {
             boxShadow="base" 
             colorScheme="teal"
             borderRadius="full"
-            icon={<ArrowDownIcon/>}
+            width="50px"
+            height="50px"
+            icon={<ArrowDownIcon w={6} h={6}/>}
             onClick={()=>{
               fetchMore({
                 variables: { 
