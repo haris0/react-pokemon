@@ -1,6 +1,7 @@
 import React from "react";
-import {Box, Image} from "@chakra-ui/react";
+import {Box, Image, Tag, Text} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import Pokeball from '../assets/Pokeball.png'
 
 export default function Card({ pokemonList }){
   return (
@@ -15,31 +16,46 @@ export default function Card({ pokemonList }){
         gridTemplateColumns = "repeat(auto-fill, minmax(150px, 1fr))"
         gridGap="15px">
         {pokemonList.map(pokemon => (
-          <Link to={"/detail/" + pokemon.name}>
+          <Link to={"/detail/" + pokemon.name} key={pokemon.name}>
             <Box
               display="flex"
               flexDir="column"
-              maxHeight="150px"
-              padding="15px"
-              background="white"
               boxShadow="base" 
               rounded="md"
               cursor="pointer"
-              key={pokemon.name}
+              bgColor="lightgray"
+              backgroundImage={"url("+Pokeball+")"}
+              backgroundSize="80%"
+              backgroundPosition="center"
+              backgroundRepeat="no-repeat"
               >
-              <Box
-                mt="1"
-                fontWeight="semibold"
-                as="h4"
+              <Text 
+                fontWeight="bold" 
                 lineHeight="tight"
                 textTransform="capitalize"
-                color="#2E3131"
-              >
+                textAlign="center"
+                padding="12px 12px 0px 12px"
+                color="White">
                 {pokemon.name}
-              </Box>
+              </Text>
               <Image
                 width="100%"
+                padding="25px"
                 src={pokemon.image} />
+              <Box>
+                <Tag width="100%" bgColor="white" borderRadius="0px 0px 5px 5px">
+                  <Text
+                    width="100%"
+                    textAlign="center"
+                    fontWeight="bold" 
+                    lineHeight="tight"
+                    textTransform="capitalize"
+                    padding="10px"
+                    color="#2E3131">
+                    Owened : 0
+                  </Text>
+                </Tag>
+              </Box>
             </Box>
           </Link>
         ))}
