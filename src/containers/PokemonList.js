@@ -1,27 +1,11 @@
 import React from 'react';
 import { Container, Heading} from '@chakra-ui/react';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import MyListButton from '../components/MyListButton';
 import Card from '../components/Card'
 import {Box, Stack, Skeleton, IconButton} from '@chakra-ui/react';
 import { ArrowDownIcon} from '@chakra-ui/icons';
-
-const GET_POKEMONS = gql`
-  query pokemons($limit: Int, $offset: Int) {
-    pokemons(limit: $limit, offset: $offset) {
-      count
-      nextOffset
-      prevOffset
-      status
-      message
-      results {
-        url
-        name
-        image
-      }
-    }
-  }
-`;
+import {GET_POKEMONS} from '../queries/queriesList'
 
 export default function PokemonList() {
     
@@ -38,9 +22,7 @@ export default function PokemonList() {
         <Heading as="h2" color="#2E3131" textAlign="center">Wild Pokemon</Heading>
         {loading && 
           <Stack marginTop="30px">
-            <Skeleton height="40px" />
-            <Skeleton height="40px" />
-            <Skeleton height="40px" />
+            <Skeleton height="80px" />
         </Stack>
         }
         {error && "Error Load Data"}

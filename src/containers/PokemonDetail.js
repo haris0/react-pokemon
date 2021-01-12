@@ -1,45 +1,25 @@
+import React from 'react'
 import { useParams } from "react-router-dom";
-import { gql, useQuery } from '@apollo/client';
-import {Container, 
-        Text,
-        Box,
-        Image
-} from '@chakra-ui/react'
+import { useQuery } from '@apollo/client';
 import Pokeball from '../assets/Pokeball.png';
-import {PokemonColors} from "../components/PokemonColors";
 import PokemonBall from '../components/PokemonBall'
-
-const GET_POKEMON_DET = gql`
-  query pokemon($name: String!) {
-    pokemon(name: $name) {
-      id
-      name
-      height
-      weight
-      sprites {
-        front_default
-      }
-      moves {
-        move {
-          name
-        }
-      }
-      types {
-        type {
-          name
-        }
-      }
-      stats{
-        stat{
-          name
-        }
-        effort
-        base_stat
-      }
-    }
-  }
-`;
-
+import MovesTable from "../components/MovesTable";
+import StatList from '../components/StatList'
+import WeightHeight from '../components/WeightHeight'
+import TypeList from '../components/TypeList'
+import {PokemonColors} from "../components/PokemonColors";
+import {GET_POKEMON_DET} from '../queries/queriesList'
+import {
+  Container, 
+  Text,
+  Box,
+  Image,
+  Drawer,
+  DrawerBody,
+  DrawerOverlay,
+  DrawerContent,
+  useDisclosure
+} from '@chakra-ui/react'
 
 export default function PokemonDetail() {
   const pokename = useParams().name
@@ -49,10 +29,26 @@ export default function PokemonDetail() {
       name : pokename
     },
   });
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   if(!loading && data) console.log(data)
   return (
     <>
+    <Box onClick={onOpen}>
+      <PokemonBall></PokemonBall>
+    </Box>
+    <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
+      <DrawerOverlay heigth='100% !important' />
+      <DrawerContent heigth='100% !important'>
+        <DrawerBody>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
     {error && "Error Load Data"}
     {!loading && data &&
       <Box>
@@ -67,7 +63,7 @@ export default function PokemonDetail() {
           backgroundPosition="right"
           backgroundRepeat="no-repeat"
         ></Box>
-        <Container maxW="960px" marginBottom="60px">
+        <Container maxW="960px" marginBottom="100px">
           <Image
             display="block"
             marginTop="-150px"
@@ -77,7 +73,6 @@ export default function PokemonDetail() {
             padding="10px"
             src={data.pokemon.sprites.front_default} 
             fallbackSrc={Pokeball}/> 
-          <PokemonBall></PokemonBall>
           <Text
             textAlign="center"
             textTransform="capitalize"
@@ -85,6 +80,28 @@ export default function PokemonDetail() {
             marginTop="-50px"
             fontSize="32px"
           >{data.pokemon.name}</Text>
+          <TypeList typeList={data.pokemon.types}></TypeList>
+          <Container paddingLeft="0px" paddingRight="0px">
+            <WeightHeight 
+              height={data.pokemon.height} 
+              weight={data.pokemon.weight}>
+            </WeightHeight>
+            <Text 
+              fontWeight="Bold"
+              fontSize="24px"
+              margin="20px 5px 5px">
+              Stats
+            </Text>
+            <StatList statList={data.pokemon.stats}></StatList>
+            <Text 
+              fontWeight="Bold"
+              fontSize="24px"
+              margin="20px 5px 5px"
+            >
+              Moves
+            </Text>
+            <MovesTable movesList={data.pokemon.moves}></MovesTable>
+          </Container>
         </Container>
       </Box>
     }

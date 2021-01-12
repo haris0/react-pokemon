@@ -19,6 +19,7 @@ export default function PokemonBall() {
         <Image 
           boxShadow="xl"
           borderRadius="full"
+          bgColor= "white"
           cursor="pointer"
           src={PokeSquare}
           height="70px"
