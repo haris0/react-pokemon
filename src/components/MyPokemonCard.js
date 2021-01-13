@@ -8,8 +8,11 @@ import {
 import Pokeball from '../assets/Pokeball.png'
 import PokeSquare from "../assets/PokeSquare.png";
 import {PokemonColors} from "../components/PokemonColors";
+import {useRemoveMyPokemonList} from '../context'
 
 export default function MyPokemonCard({myPokemonList}) {
+  const removeMyPokemon = useRemoveMyPokemonList()
+
   return (
     <div>
       <Box
@@ -59,7 +62,10 @@ export default function MyPokemonCard({myPokemonList}) {
                   src={pokemon.img}
                   fallbackSrc={PokeSquare}/>
                 <Box 
-                  cursor="pointer">
+                  cursor="pointer"
+                  onClick={()=>{
+                    removeMyPokemon(pokemon.nickName)
+                  }}>
                   <Tag width="100%" bgColor="white" borderRadius="0px 0px 5px 5px">
                     <Text
                       width="100%"

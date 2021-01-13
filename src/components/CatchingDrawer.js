@@ -14,10 +14,13 @@ import {
   FormLabel,
   useToast,
   FormHelperText,
-  useDisclosure
-} from '@chakra-ui/react'
-import PokemonBall from './PokemonBall'
+  useDisclosure,
+  Flex, 
+  Image
+}from '@chakra-ui/react'
 import {useAddMyPokemonList} from '../context'
+import {} from '@chakra-ui/react';
+import PokeSquare from "../assets/PokeSquare.png";
 
 
 function getRandomItem() {
@@ -88,9 +91,30 @@ export default function CatchingDrawer({data}) {
   }
   return (
     <div>
-      <Box onClick={onOpen}>
-        <PokemonBall></PokemonBall>
+      <Flex
+        justify="space-between"
+        overflow="hidden"
+        position="fixed"
+        bottom="0"
+        width="100%"
+        left="0"
+        wrap="wrap"
+        padding="1rem 0"
+      >
+      <Box margin="auto">
+        <Flex align="center">
+          <Image 
+            boxShadow="xl"
+            borderRadius="full"
+            bgColor= "white"
+            cursor="pointer"
+            src={PokeSquare}
+            height="70px"
+            onClick={onOpen}
+          ></Image>
+        </Flex>
       </Box>
+      </Flex>
       <Drawer placement="top" isOpen={isOpen}>
         <DrawerOverlay heigth='100% !important' />
         <DrawerContent heigth='100% !important'>

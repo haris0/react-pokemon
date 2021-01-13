@@ -21,7 +21,7 @@ export default function WeightHeaight({height, weight}) {
         </Stat>
         <Stat position="initial">
           <StatLabel>Weight</StatLabel>
-          <StatNumber>{weight+" lbs"}</StatNumber>
+          <StatNumber>{weight+"lbs"}</StatNumber>
         </Stat>
       </StatGroup>
     </div>

@@ -3,7 +3,7 @@ import { Container, Heading} from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
 import MyListButton from '../components/MyListButton';
 import WildCardPokemon from '../components/WildCardPokemon'
-import {Box, Stack, Skeleton, IconButton} from '@chakra-ui/react';
+import {Box, Skeleton, IconButton, SimpleGrid} from '@chakra-ui/react';
 import { ArrowDownIcon} from '@chakra-ui/icons';
 import {GET_POKEMONS} from '../queries/queriesList'
 
@@ -21,9 +21,13 @@ export default function PokemonList() {
       <Container maxW="960px" marginTop="75px" marginBottom="15px">
         <Heading as="h2" color="#2E3131" textAlign="center">Wild Pokemon</Heading>
         {loading && 
-          <Stack marginTop="30px">
-            <Skeleton height="80px" />
-        </Stack>
+          <SimpleGrid columns={[1, null, 5]} marginTop="30px" spacing="20px">
+            <Skeleton height="100px" />
+            <Skeleton height="100px" />
+            <Skeleton height="100px" />
+            <Skeleton height="100px" />
+            <Skeleton height="100px" />
+          </SimpleGrid>
         }
         {error && "Error Load Data"}
         {!loading && data &&

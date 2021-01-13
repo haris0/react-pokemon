@@ -3,20 +3,8 @@ import React, { createContext, useContext, useState} from 'react'
 export const MyPokemonContex = createContext()
 
 const MyPokemonContexProvider = (props) => {
-  const [myPokemonList, setMyPokemonList] = useState([
-    {
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
-      name: "charmander",
-      nickName: "Naga Kecil",
-      type:["fire"]
-    },
-    {
-      img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
-      name: "charizard",
-      nickName: "Naga Besar",
-      type:["fire", "flying"]
-    }
-  ])
+  
+  const [myPokemonList, setMyPokemonList] = useState([])
 
   return (
     <MyPokemonContex.Provider value={{
@@ -27,7 +15,6 @@ const MyPokemonContexProvider = (props) => {
     </MyPokemonContex.Provider>
   );
 };
-
 
 export const useMyPokemonList = () => {
   const {myPokemonList} = useContext(MyPokemonContex)
@@ -40,6 +27,14 @@ export const useAddMyPokemonList = () => {
 
   return (pokemon) => {
     setMyPokemonList((prev) => [...prev, pokemon]);
+  };
+}
+
+export const useRemoveMyPokemonList = () => {
+  const {setMyPokemonList} = useContext(MyPokemonContex)
+
+  return (nickName) => {
+    setMyPokemonList((list) => list.filter((item) => item.nickName !== nickName));
   };
 }
 
