@@ -112,7 +112,8 @@ export default function CatchingDrawer({data}) {
             bgColor= "white"
             cursor="pointer"
             src={PokeballG}
-            height="70px"
+            height="60px"
+            height="60px"
             onClick={onOpen}
           ></Image>
         </Flex>

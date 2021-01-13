@@ -4,7 +4,8 @@ import {
   Container, 
   Heading,
   Text,
-  Image
+  Image,
+  SimpleGrid
 }from '@chakra-ui/react'
 import {useMyPokemonList} from '../context'
 import MyPokemonCard from '../components/MyPokemonCard'
@@ -23,7 +24,11 @@ export default function MyPokemonList() {
       <Container maxW="960px" marginTop="75px" marginBottom="60px">
         <Heading as="h2" color="#2E3131" textAlign="center">My Pokemon</Heading>
         {myPokemonList.length>0 &&
-          <MyPokemonCard myPokemonList={myPokemonList}></MyPokemonCard>
+          <SimpleGrid columns={[1, null, 5]} padding="15px" marginTop="20px" spacing="20px">
+            {myPokemonList.map(pokemon => (
+              <MyPokemonCard pokemon={pokemon}></MyPokemonCard>
+            ))}
+          </SimpleGrid>
         }
         {myPokemonList.length<=0 &&
           <>

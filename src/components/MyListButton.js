@@ -24,7 +24,7 @@ export default function MyListButton() {
               colorScheme="teal"
               borderRadius="full"
               padding="25px"
-              leftIcon={<Image src={Pokeball} height="25px"/>}
+              leftIcon={<Image src={Pokeball} height="23px" width="23px"/>}
               >My Pokemon
 
           </Button>

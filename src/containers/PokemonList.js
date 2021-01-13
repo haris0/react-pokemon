@@ -32,8 +32,12 @@ export default function PokemonList() {
         {error && "Error Load Data"}
         {!loading && data &&
           <div>
-            <WildCardPokemon pokemonList={data.pokemons.results}></WildCardPokemon>
-            <MyListButton/>
+            <SimpleGrid columns={[1, null, 5]} padding="15px" marginTop="20px" spacing="20px">
+              {data.pokemons.results.map(pokemon => (
+                <WildCardPokemon pokemon={pokemon}></WildCardPokemon>
+              ))}
+              <MyListButton/>
+            </SimpleGrid>
           </div>
         }
         {!loading &&

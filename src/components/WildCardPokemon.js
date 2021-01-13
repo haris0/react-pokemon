@@ -1,68 +1,58 @@
 import React from "react";
-import {Box, Image, Tag, Text} from "@chakra-ui/react";
+import {Box, 
+        Image, 
+        Tag, 
+        Text, 
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import Pokeball from '../assets/Pokeball.png'
 import PokeballG from "../assets/PokeballG.png";
 
-export default function Card({ pokemonList }){
+export default function Card({ pokemon }){
   return (
-    <Box
-      flex="1"
-      padding="15px"
-      display="flex"
-      flexDir="column">
+    <Link to={"/detail/" + pokemon.name} key={pokemon.name}>
       <Box
-        width="100%"
-        display="grid"
-        gridTemplateColumns = "repeat(auto-fill, minmax(150px, 1fr))"
-        gridGap="15px">
-        {pokemonList.map(pokemon => (
-          <Link to={"/detail/" + pokemon.name} key={pokemon.name}>
-            <Box
-              display="flex"
-              flexDir="column"
-              boxShadow="base" 
-              rounded="md"
-              cursor="pointer"
-              bgColor="lightgray"
-              backgroundImage={"url("+Pokeball+")"}
-              backgroundSize="80%"
-              backgroundPosition="center"
-              backgroundRepeat="no-repeat"
-              >
-              <Text 
-                fontWeight="bold" 
-                lineHeight="tight"
-                textTransform="capitalize"
-                textAlign="center"
-                padding="12px 12px 0px 12px"
-                color="White">
-                {pokemon.name}
-              </Text>
-              <Image
-                width="90%"
-                display="block"
-                margin="auto"
-                src={pokemon.image}
-                fallbackSrc={PokeballG}/>
-              <Box>
-                <Tag width="100%" bgColor="white" borderRadius="0px 0px 5px 5px">
-                  <Text
-                    width="100%"
-                    textAlign="center"
-                    fontWeight="bold" 
-                    lineHeight="tight"
-                    textTransform="capitalize"
-                    padding="10px"
-                    color="#2E3131">
-                    Owened : 0
-                  </Text>
-                </Tag>
-              </Box>
-            </Box>
-          </Link>
-        ))}
+        display="flex"
+        flexDir="column"
+        boxShadow="base" 
+        rounded="md"
+        cursor="pointer"
+        bgColor="lightgray"
+        backgroundImage={"url("+Pokeball+")"}
+        backgroundSize="80%"
+        backgroundPosition="center"
+        backgroundRepeat="no-repeat"
+        >
+        <Text 
+          fontWeight="bold" 
+          lineHeight="tight"
+          textTransform="capitalize"
+          textAlign="center"
+          padding="12px 12px 0px 12px"
+          color="White">
+          {pokemon.name}
+        </Text>
+        <Image
+          width="90%"
+          display="block"
+          margin="auto"
+          src={pokemon.image}
+          fallbackSrc={PokeballG}/>
+        <Box>
+          <Tag width="100%" bgColor="white" borderRadius="0px 0px 5px 5px">
+            <Text
+              width="100%"
+              textAlign="center"
+              fontWeight="bold" 
+              lineHeight="tight"
+              textTransform="capitalize"
+              padding="10px"
+              color="#2E3131">
+              Owened : 0
+            </Text>
+          </Tag>
+        </Box>
       </Box>
-    </Box>
+    </Link>
   )
 }
