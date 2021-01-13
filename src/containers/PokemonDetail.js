@@ -2,11 +2,11 @@ import React from 'react'
 import { useParams } from "react-router-dom";
 import { useQuery } from '@apollo/client';
 import Pokeball from '../assets/Pokeball.png';
-import PokemonBall from '../components/PokemonBall'
 import MovesTable from "../components/MovesTable";
 import StatList from '../components/StatList'
 import WeightHeight from '../components/WeightHeight'
 import TypeList from '../components/TypeList'
+import CatchingDrawer from "../components/CatchingDrawer";
 import {PokemonColors} from "../components/PokemonColors";
 import {GET_POKEMON_DET} from '../queries/queriesList'
 import {
@@ -14,11 +14,6 @@ import {
   Text,
   Box,
   Image,
-  Drawer,
-  DrawerBody,
-  DrawerOverlay,
-  DrawerContent,
-  useDisclosure
 } from '@chakra-ui/react'
 
 export default function PokemonDetail() {
@@ -29,27 +24,16 @@ export default function PokemonDetail() {
       name : pokename
     },
   });
-  const { isOpen, onOpen, onClose } = useDisclosure()
 
   if(!loading && data) console.log(data)
   return (
     <>
-    <Box onClick={onOpen}>
-      <PokemonBall></PokemonBall>
-    </Box>
-    <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
-      <DrawerOverlay heigth='100% !important' />
-      <DrawerContent heigth='100% !important'>
-        <DrawerBody>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </DrawerBody>
-      </DrawerContent>
-    </Drawer>
     {error && "Error Load Data"}
+    {!loading && data &&
+    <div>
+      <CatchingDrawer data={data}></CatchingDrawer>
+    </div>
+    }
     {!loading && data &&
       <Box>
         <Box

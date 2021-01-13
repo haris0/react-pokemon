@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import AppRouter from './AppRouter'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import {extendTheme, ChakraProvider } from '@chakra-ui/react';
-import {createBreakpoints} from "@chakra-ui/theme-tools"
+import { extendTheme, ChakraProvider } from '@chakra-ui/react';
+import { createBreakpoints } from "@chakra-ui/theme-tools"
 
 const breakpoints = createBreakpoints({
   sm: "320px",
@@ -16,9 +16,9 @@ const breakpoints = createBreakpoints({
 const theme = extendTheme({ breakpoints })
 
 ReactDOM.render(
-    <ChakraProvider theme={theme}>
-      <AppRouter/>
-    </ChakraProvider>,
+  <ChakraProvider theme={theme}>
+    <AppRouter />
+  </ChakraProvider>,
   document.getElementById('root')
 );
 
