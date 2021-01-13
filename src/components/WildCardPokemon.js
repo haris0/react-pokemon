@@ -40,8 +40,9 @@ export default function Card({ pokemonList }){
                 {pokemon.name}
               </Text>
               <Image
-                width="100%"
-                padding="25px"
+                width="90%"
+                display="block"
+                margin="auto"
                 src={pokemon.image}
                 fallbackSrc={PokeSquare}/>
               <Box>
@@ -62,7 +63,6 @@ export default function Card({ pokemonList }){
           </Link>
         ))}
       </Box>
-      
     </Box>
   )
 }

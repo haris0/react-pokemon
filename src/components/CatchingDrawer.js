@@ -17,6 +17,7 @@ import {
   useDisclosure
 } from '@chakra-ui/react'
 import PokemonBall from './PokemonBall'
+import {useAddMyPokemonList} from '../context'
 
 
 function getRandomItem() {
@@ -33,6 +34,8 @@ export default function CatchingDrawer({data}) {
   const [nickName, setNickNaem] = useState("")
   const [nickNameEmpty, setNickNameEmpty] = useState(false)
   const handleChange = (event) => setNickNaem(event.target.value)
+
+  const addMyPokemon = useAddMyPokemonList()
 
   async function catchingPokemon(){
     setCatching(true)
@@ -73,10 +76,11 @@ export default function CatchingDrawer({data}) {
         img:data.pokemon.sprites.front_default,
         type:data.pokemon.types.map(type =>(type.type.name))
       }
+      addMyPokemon(pekemonCaught)
       console.log(pekemonCaught)
       toast({
         position: "top",
-        title: nickName+" Saved as My Pokemon",
+        title: nickName+" Saved as Your Pokemon",
         status: "success",
         duration: 3000,
       })

@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Heading} from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
 import MyListButton from '../components/MyListButton';
-import Card from '../components/Card'
+import WildCardPokemon from '../components/WildCardPokemon'
 import {Box, Stack, Skeleton, IconButton} from '@chakra-ui/react';
 import { ArrowDownIcon} from '@chakra-ui/icons';
 import {GET_POKEMONS} from '../queries/queriesList'
@@ -28,7 +28,7 @@ export default function PokemonList() {
         {error && "Error Load Data"}
         {!loading && data &&
           <div>
-            <Card pokemonList={data.pokemons.results}></Card>
+            <WildCardPokemon pokemonList={data.pokemons.results}></WildCardPokemon>
             <MyListButton/>
           </div>
         }
