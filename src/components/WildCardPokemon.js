@@ -2,7 +2,7 @@ import React from "react";
 import {Box, Image, Tag, Text} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import Pokeball from '../assets/Pokeball.png'
-import PokeSquare from "../assets/PokeSquare.png";
+import PokeballG from "../assets/PokeballG.png";
 
 export default function Card({ pokemonList }){
   return (
@@ -44,7 +44,7 @@ export default function Card({ pokemonList }){
                 display="block"
                 margin="auto"
                 src={pokemon.image}
-                fallbackSrc={PokeSquare}/>
+                fallbackSrc={PokeballG}/>
               <Box>
                 <Tag width="100%" bgColor="white" borderRadius="0px 0px 5px 5px">
                   <Text

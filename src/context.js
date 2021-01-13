@@ -4,7 +4,11 @@ export const MyPokemonContex = createContext()
 
 const MyPokemonContexProvider = (props) => {
   
-  const [myPokemonList, setMyPokemonList] = useState([])
+  let initState = []
+  if(localStorage.hasOwnProperty("myPokemon")){
+    initState = JSON.parse(localStorage.getItem("myPokemon"));
+  }
+  const [myPokemonList, setMyPokemonList] = useState(initState)
 
   return (
     <MyPokemonContex.Provider value={{

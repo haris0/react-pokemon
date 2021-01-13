@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {
   Container, 
   Text,
@@ -18,10 +18,8 @@ import {
   Flex, 
   Image
 }from '@chakra-ui/react'
-import {useAddMyPokemonList} from '../context'
-import {} from '@chakra-ui/react';
-import PokeSquare from "../assets/PokeSquare.png";
-
+import {useAddMyPokemonList, useMyPokemonList} from '../context';
+import PokeballG from "../assets/PokeballG.png";
 
 function getRandomItem() {
   const arr = [1, 0]
@@ -37,7 +35,8 @@ export default function CatchingDrawer({data}) {
   const [nickName, setNickNaem] = useState("")
   const [nickNameEmpty, setNickNameEmpty] = useState(false)
   const handleChange = (event) => setNickNaem(event.target.value)
-
+  
+  const myPokemonList = useMyPokemonList();
   const addMyPokemon = useAddMyPokemonList()
 
   async function catchingPokemon(){
@@ -65,6 +64,10 @@ export default function CatchingDrawer({data}) {
   function setFalseNickName() {
     setNickNameEmpty(false)    
   }
+
+  useEffect(() => {
+    localStorage.setItem('myPokemon', JSON.stringify(myPokemonList));
+  }, [myPokemonList]);
   
   const toast = useToast()
   function savePokemon(){
@@ -83,7 +86,7 @@ export default function CatchingDrawer({data}) {
       console.log(pekemonCaught)
       toast({
         position: "top",
-        title: nickName+" Saved as Your Pokemon",
+        title: nickName+" Saved",
         status: "success",
         duration: 3000,
       })
@@ -108,7 +111,7 @@ export default function CatchingDrawer({data}) {
             borderRadius="full"
             bgColor= "white"
             cursor="pointer"
-            src={PokeSquare}
+            src={PokeballG}
             height="70px"
             onClick={onOpen}
           ></Image>

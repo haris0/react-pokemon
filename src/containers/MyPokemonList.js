@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   Box,
   Container, 
@@ -8,11 +8,15 @@ import {
 }from '@chakra-ui/react'
 import {useMyPokemonList} from '../context'
 import MyPokemonCard from '../components/MyPokemonCard'
-import PokeSquare from '../assets/PokeSquare.png'
+import PokeballG from '../assets/PokeballG.png'
 
 export default function MyPokemonList() {
   const myPokemonList = useMyPokemonList();
   console.log(myPokemonList)
+
+  useEffect(() => {
+    localStorage.setItem('myPokemon', JSON.stringify(myPokemonList));
+  }, [myPokemonList]);
 
   return (
     <div>
@@ -35,7 +39,7 @@ export default function MyPokemonList() {
               padding="50px" 
               display="block"
               margin="auto"
-              src={PokeSquare}></Image>
+              src={PokeballG}></Image>
             </Text>
             <Text 
               fontWeight="bold"

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {
   Box, 
   Image, 
@@ -6,7 +6,7 @@ import {
   Text} 
   from '@chakra-ui/react'
 import Pokeball from '../assets/Pokeball.png'
-import PokeSquare from "../assets/PokeSquare.png";
+import PokeballG from "../assets/PokeballG.png";
 import {PokemonColors} from "../components/PokemonColors";
 import {useRemoveMyPokemonList} from '../context'
 
@@ -60,7 +60,7 @@ export default function MyPokemonCard({myPokemonList}) {
                   display="block"
                   margin="auto"
                   src={pokemon.img}
-                  fallbackSrc={PokeSquare}/>
+                  fallbackSrc={PokeballG}/>
                 <Box 
                   cursor="pointer"
                   onClick={()=>{
