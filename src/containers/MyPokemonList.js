@@ -11,38 +11,39 @@ import {useMyPokemonList} from '../context/context'
 import MyPokemonCard from '../components/MyPokemonList/MyPokemonCard'
 import PokeballG from '../assets/PokeballG.png'
 
+const container_style = {
+  maxW:"960px",
+  marginTop:"85px",
+  marginBottom:"16px"
+}
+
+const heading_style = {
+  as:"h2",
+  color:"#2E3131",
+  textAlign:"center"
+}
+
+const grid_style = {
+  padding:"15px",
+  marginTop:"20px",
+  spacing:"20px"
+}
+
+const no_pokemon_text = {
+  fontSize:"40px",
+  color:"lightgray",
+  lineHeight:"50px",
+  fontWeight:"Bold",
+}
+
+const no_pokemon_img = {
+  maxW:"240px",
+  padding:"50px",
+  display:"block",
+  margin:"auto",
+}
+
 export default function MyPokemonList() {
-  const container_style = {
-    maxW:"960px",
-    marginTop:"85px",
-    marginBottom:"16px"
-  }
-
-  const heading_style = {
-    as:"h2",
-    color:"#2E3131",
-    textAlign:"center"
-  }
-
-  const grid_style = {
-    padding:"15px",
-    marginTop:"20px",
-    spacing:"20px"
-  }
-
-  const no_pokemon_text = {
-    fontSize:"40px",
-    color:"lightgray",
-    lineHeight:"50px",
-    fontWeight:"Bold",
-  }
-
-  const no_pokemon_img = {
-    maxW:"240px",
-    padding:"50px",
-    display:"block",
-    margin:"auto",
-  }
 
   const myPokemonList = useMyPokemonList();
   console.log(myPokemonList)

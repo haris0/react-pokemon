@@ -3,7 +3,6 @@ import {
   Box,
   Badge,
 } from '@chakra-ui/react'
-
 import {PokemonColors} from "../PokemonColors";
 
 const type_box = {

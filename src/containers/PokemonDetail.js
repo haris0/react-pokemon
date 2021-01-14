@@ -17,44 +17,45 @@ import {
 } from '@chakra-ui/react'
 import {useCountOwnPokemon} from '../context/context';
 
+const box_header = {
+  marginTop:"57px",
+  right:"0",
+  width:"100%",
+  height:"150px",
+  backgroundSize:"160px",
+  backgroundPosition:"right",
+  backgroundRepeat:"no-repeat"
+}
+
+const pokemon_img = {
+  display:"block",
+  marginTop:"-150px",
+  marginRight:"auto",
+  marginLeft:"auto",
+  height:"250px",
+  padding:"10px",
+}
+const pokemon_name = {
+  textAlign:"center",
+  textTransform:"capitalize",
+  fontWeight:"Bold",
+  marginTop:"-50px",
+  fontSize:"32px",
+}
+
+const section_text = {
+  fontWeight:"Bold",
+  fontSize:"24px",
+  margin:"20px 5px 5px"
+}
+
+const count_text = {
+  textAlign:"center",
+  marginTop:"15px",
+  fontWeight:"700"
+}
+
 export default function PokemonDetail() {
-  const box_header = {
-    marginTop:"57px",
-    right:"0",
-    width:"100%",
-    height:"150px",
-    backgroundSize:"160px",
-    backgroundPosition:"right",
-    backgroundRepeat:"no-repeat"
-  }
-
-  const pokemon_img = {
-    display:"block",
-    marginTop:"-150px",
-    marginRight:"auto",
-    marginLeft:"auto",
-    height:"250px",
-    padding:"10px",
-  }
-  const pokemon_name = {
-    textAlign:"center",
-    textTransform:"capitalize",
-    fontWeight:"Bold",
-    marginTop:"-50px",
-    fontSize:"32px",
-  }
-
-  const section_text = {
-    fontWeight:"Bold",
-    fontSize:"24px",
-    margin:"20px 5px 5px"
-  }
-
-  const count_text = {
-    textAlign:"center",
-    marginTop:"15px",
-    fontWeight:"700"
-  }
 
   const pokename = useParams().name
   const countOwned = useCountOwnPokemon(pokename);

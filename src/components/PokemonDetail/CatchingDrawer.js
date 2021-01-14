@@ -21,6 +21,54 @@ import {
 import { useAddMyPokemonList, useMyPokemonList } from '../../context/context';
 import PokeballG from "../../assets/PokeballG.png";
 
+const flex_button = {
+  justify:"space-between",
+  overflow:"hidden",
+  position:"fixed",
+  bottom:"0",
+  width:"100%",
+  left:"0",
+  wrap:"wrap",
+  padding:"1rem 0"
+}
+
+const img_button = {
+  boxShadow:"xl",
+  borderRadius:"full",
+  bgColor:"white",
+  cursor:"pointer",
+  height:"60px"
+}
+
+const drawer_container = {
+  maxW:"960px",
+  paddingLeft:"0px",
+  paddingRight:"0px"
+}
+const drawer_container2 = {
+  paddingLeft:"0px",
+  paddingRight:"0px", 
+  textAlign:"center"
+}
+
+const message_text = {
+  fontSize:"18px",
+  fontWeight:"Bold",
+  textTransform:"capitalize"
+}
+
+const yes_button = {
+  margin:"10px",
+  width:"100px",
+  colorScheme:"teal"
+}
+
+const no_button = {
+  margin:"20px 10px",
+  width:"100px",
+  colorScheme:"red"
+}
+
 function getRandomItem() {
   const arr = [1, 0]
   const randomIndex = Math.floor(Math.random() * arr.length);
@@ -29,54 +77,6 @@ function getRandomItem() {
 }
 
 export default function CatchingDrawer({ data }) {
-
-  const flex_button = {
-    justify:"space-between",
-    overflow:"hidden",
-    position:"fixed",
-    bottom:"0",
-    width:"100%",
-    left:"0",
-    wrap:"wrap",
-    padding:"1rem 0"
-  }
-
-  const img_button = {
-    boxShadow:"xl",
-    borderRadius:"full",
-    bgColor:"white",
-    cursor:"pointer",
-    height:"60px"
-  }
-
-  const drawer_container = {
-    maxW:"960px",
-    paddingLeft:"0px",
-    paddingRight:"0px"
-  }
-  const drawer_container2 = {
-    paddingLeft:"0px",
-    paddingRight:"0px", 
-    textAlign:"center"
-  }
-
-  const message_text = {
-    fontSize:"18px",
-    fontWeight:"Bold",
-    textTransform:"capitalize"
-  }
-
-  const yes_button = {
-    margin:"10px",
-    width:"100px",
-    colorScheme:"teal"
-  }
-
-  const no_button = {
-    margin:"20px 10px",
-    width:"100px",
-    colorScheme:"red"
-  }
 
   const [catching, setCatching] = useState(false);
   const [firsTry, setFirsTry] = useState(true);

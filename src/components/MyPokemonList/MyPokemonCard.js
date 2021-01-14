@@ -18,77 +18,78 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 
+const outer_box = {
+  display:"flex",
+  flexDir:"column",
+  boxShadow:"base",
+  rounded:"md",
+  backgroundSize:"80%",
+  backgroundPosition:"center",
+  backgroundRepeat:"no-repeat",
+}
+
+const pokemon_nickname = {
+  fontWeight:"bold",
+  lineHeight:"tight",
+  textTransform:"capitalize",
+  textAlign:"center",
+  padding:"12px 12px 0px 12px",
+  color:"White"
+}
+
+const pokemon_name = {
+  textAlign:"center",
+  color:"white",
+  marginTop:"-5px",
+  textTransform:"capitalize",
+  fontSize:"14px"    
+}
+
+const pokemon_img = {
+  width:"90%",
+  display:"block",
+  margin:"auto"
+}
+
+const tag_release = {
+  width:"100%",
+  bgColor:"white",
+  borderRadius:"0px 0px 5px 5px"
+}
+
+const release_text = {
+  width:"100%",
+  textAlign:"center",
+  fontWeight:"bold",
+  lineHeight:"tight",
+  textTransform:"capitalize",
+  padding:"10px",
+  color:"#2E3131"
+}
+
+const drawer_container = {
+  maxW:"960px",
+  paddingLeft:"0px",
+  paddingRight:"0px"
+}
+const drawer_container2 = {
+  paddingLeft:"0px",
+  paddingRight:"0px", 
+  textAlign:"center"
+}
+
+const confirm_text = {
+  fontSize:"18px",
+  fontWeight:"Bold",
+  textTransform:"capitalize"
+}
+
+const confirm_button = {
+  margin:"10px",
+  width:"100px"
+}
+
 export default function MyPokemonCard({pokemon}) {
-  const outer_box = {
-    display:"flex",
-    flexDir:"column",
-    boxShadow:"base",
-    rounded:"md",
-    backgroundSize:"80%",
-    backgroundPosition:"center",
-    backgroundRepeat:"no-repeat",
-  }
-
-  const pokemon_nickname = {
-    fontWeight:"bold",
-    lineHeight:"tight",
-    textTransform:"capitalize",
-    textAlign:"center",
-    padding:"12px 12px 0px 12px",
-    color:"White"
-  }
-
-  const pokemon_name = {
-    textAlign:"center",
-    color:"white",
-    marginTop:"-5px",
-    textTransform:"capitalize",
-    fontSize:"14px"    
-  }
-
-  const pokemon_img = {
-    width:"90%",
-    display:"block",
-    margin:"auto"
-  }
-
-  const tag_release = {
-    width:"100%",
-    bgColor:"white",
-    borderRadius:"0px 0px 5px 5px"
-  }
-
-  const release_text = {
-    width:"100%",
-    textAlign:"center",
-    fontWeight:"bold",
-    lineHeight:"tight",
-    textTransform:"capitalize",
-    padding:"10px",
-    color:"#2E3131"
-  }
-
-  const drawer_container = {
-    maxW:"960px",
-    paddingLeft:"0px",
-    paddingRight:"0px"
-  }
-  const drawer_container2 = {
-    paddingLeft:"0px",
-    paddingRight:"0px", 
-    textAlign:"center"
-  }
-
-  const confirm_text = {
-    fontSize:"18px",
-    fontWeight:"Bold",
-    textTransform:"capitalize"
-  }
-
-  const confirm_button = {
-    margin:"10px",
-    width:"100px"
-  }
 
   const removeMyPokemon = useRemoveMyPokemonList()
   const { isOpen, onOpen, onClose } = useDisclosure()

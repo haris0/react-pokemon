@@ -15,33 +15,33 @@ import { ArrowDownIcon, ArrowUpIcon} from '@chakra-ui/icons';
 import {GET_POKEMONS} from '../queries/queriesList'
 import {useMyPokemonList} from '../context/context'
 
+const container_style = {
+  maxW:"960px",
+  marginTop:"85px",
+  marginBottom:"16px"
+}
+const heading_style = {
+  as:"h2",
+  color:"#2E3131",
+  textAlign:"center"
+}
+
+const grid_style = {
+  padding:"15px",
+  marginTop:"20px",
+  spacing:"20px"
+}
+
+const icon_style = {
+  bg:"#23CBA7",
+  boxShadow:"base",
+  colorScheme:"teal",
+  borderRadius:"full",
+  width:"50px",
+  height:"50px"
+}
+
 export default function WildPokemonList() {
-
-  const container_style = {
-    maxW:"960px",
-    marginTop:"85px",
-    marginBottom:"16px"
-  }
-  const heading_style = {
-    as:"h2",
-    color:"#2E3131",
-    textAlign:"center"
-  }
-
-  const grid_style = {
-    padding:"15px",
-    marginTop:"20px",
-    spacing:"20px"
-  }
-
-  const icon_style = {
-    bg:"#23CBA7",
-    boxShadow:"base",
-    colorScheme:"teal",
-    borderRadius:"full",
-    width:"50px",
-    height:"50px"
-  }
 
   const myPokemonList = useMyPokemonList();
   const { loading, error, data, fetchMore } = useQuery(GET_POKEMONS, {

@@ -6,22 +6,24 @@ import {
   Grid,
 } from '@chakra-ui/react'
 
+const progrs_style = {
+  marginTop:"5px",
+  position:"inherit",
+  colorScheme:"teal",
+  size:"xs"
+}
+
+const stat_value = {
+  textTransform:"uppercase",
+  textAlign:"right"
+}
+
+const stat_name = {
+  textTransform:"uppercase"
+}
+
 export default function StatList({statList}) {
-  const progrs_style = {
-    marginTop:"5px",
-    position:"inherit",
-    colorScheme:"teal",
-    size:"xs"
-  }
-
-  const stat_value = {
-    textTransform:"uppercase",
-    textAlign:"right"
-  }
-
-  const stat_name = {
-    textTransform:"uppercase"
-  }
+  
   return (
     <div>
       <Box margin="5px">              
