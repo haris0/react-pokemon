@@ -29,6 +29,55 @@ function getRandomItem() {
 }
 
 export default function CatchingDrawer({ data }) {
+
+  const flex_button = {
+    justify:"space-between",
+    overflow:"hidden",
+    position:"fixed",
+    bottom:"0",
+    width:"100%",
+    left:"0",
+    wrap:"wrap",
+    padding:"1rem 0"
+  }
+
+  const img_button = {
+    boxShadow:"xl",
+    borderRadius:"full",
+    bgColor:"white",
+    cursor:"pointer",
+    height:"60px"
+  }
+
+  const drawer_container = {
+    maxW:"960px",
+    paddingLeft:"0px",
+    paddingRight:"0px"
+  }
+  const drawer_container2 = {
+    paddingLeft:"0px",
+    paddingRight:"0px", 
+    textAlign:"center"
+  }
+
+  const message_text = {
+    fontSize:"18px",
+    fontWeight:"Bold",
+    textTransform:"capitalize"
+  }
+
+  const yes_button = {
+    margin:"10px",
+    width:"100px",
+    colorScheme:"teal"
+  }
+
+  const no_button = {
+    margin:"20px 10px",
+    width:"100px",
+    colorScheme:"red"
+  }
+
   const [catching, setCatching] = useState(false);
   const [firsTry, setFirsTry] = useState(true);
   const [success, setSuccess] = useState(false);
@@ -55,6 +104,7 @@ export default function CatchingDrawer({ data }) {
     setSuccess(false)
     setNickNaem("")
     setNickNameError(false)
+    setNickNameMsg("")
   }
 
   function closeCatching() {
@@ -112,24 +162,12 @@ export default function CatchingDrawer({ data }) {
   }
   return (
     <div>
-      <Flex
-        justify="space-between"
-        overflow="hidden"
-        position="fixed"
-        bottom="0"
-        width="100%"
-        left="0"
-        wrap="wrap"
-        padding="1rem 0">
+      <Flex {...flex_button}>
         <Box margin="auto">
           <Flex align="center">
             <Image
-              boxShadow="xl"
-              borderRadius="full"
-              bgColor="white"
-              cursor="pointer"
+              {...img_button}
               src={PokeballG}
-              height="60px"
               onClick={onOpen}
             ></Image>
           </Flex>
@@ -139,20 +177,17 @@ export default function CatchingDrawer({ data }) {
         <DrawerOverlay heigth='100% !important' />
         <DrawerContent heigth='100% !important'>
           <DrawerBody>
-            <Container maxW="960px" paddingLeft="0px" paddingRight="0px">
-              <Container paddingLeft="0px" paddingRight="0px" textAlign="center">
+            <Container {...drawer_container}>
+              <Container {...drawer_container2}>
                 <Box margin="20px 10px">
                   {!catching && firsTry &&
                     <>
-                      <Text
-                        fontSize="18px"
-                        fontWeight="Bold"
-                        textTransform="capitalize">
+                      <Text {...message_text}>
                         {"Do You Want ​Catch " + data.pokemon.name + "?"}
                       </Text>
                       <Box marginTop="10px">
-                        <Button margin="10px" width="100px" colorScheme="teal" onClick={catchingPokemon}>Yes</Button>
-                        <Button margin="10px" width="100px" colorScheme="red" onClick={closeCatching}>No</Button>
+                        <Button {...yes_button} onClick={catchingPokemon}>Yes</Button>
+                        <Button {...no_button} onClick={closeCatching}>No</Button>
                       </Box>
                     </>
                   }
@@ -160,10 +195,7 @@ export default function CatchingDrawer({ data }) {
                     <>
                       {success &&
                         <>
-                          <Text
-                            fontSize="18px"
-                            fontWeight="Bold"
-                            textTransform="capitalize">
+                          <Text {...message_text}>
                             {"Yeey Success to ​Catch " + data.pokemon.name + "!!"}
                           </Text>
                           <Box marginTop="15px">
@@ -180,22 +212,19 @@ export default function CatchingDrawer({ data }) {
                                 </FormHelperText>
                               }
                             </FormControl>
-                            <Button margin="20px 10px" width="100px" colorScheme="teal" onClick={savePokemon}>Save</Button>
-                            <Button margin="20px 10px" width="100px" colorScheme="red" onClick={closeCatching}>Cancel</Button>
+                            <Button {...yes_button} onClick={savePokemon}>Save</Button>
+                            <Button {...no_button} onClick={closeCatching}>Cancel</Button>
                           </Box>
                         </>
                       }
                       {!success &&
                         <>
-                          <Text
-                            fontSize="18px"
-                            fontWeight="Bold"
-                            textTransform="capitalize">
+                          <Text {...message_text}>
                             {data.pokemon.name + " ran away!! Try again ?"}
                           </Text>
                           <Box marginTop="10px">
-                            <Button margin="10px" width="100px" colorScheme="teal" onClick={catchingPokemon}>Yes</Button>
-                            <Button margin="10px" width="100px" colorScheme="red" onClick={closeCatching}>No</Button>
+                            <Button {...yes_button} onClick={catchingPokemon}>Yes</Button>
+                            <Button {...no_button} onClick={closeCatching}>No</Button>
                           </Box>
                         </>
                       }
@@ -203,10 +232,7 @@ export default function CatchingDrawer({ data }) {
                   }
                   {catching &&
                     <>
-                      <Text
-                        fontSize="18px"
-                        fontWeight="Bold"
-                        textTransform="capitalize">
+                      <Text {...message_text}>
                         {"​Catching " + data.pokemon.name + " !!"}
                       </Text>
                       <CircularProgress marginTop="15px" isIndeterminate color="teal.300" />

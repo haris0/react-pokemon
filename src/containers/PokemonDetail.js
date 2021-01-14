@@ -18,6 +18,44 @@ import {
 import {useCountOwnPokemon} from '../context';
 
 export default function PokemonDetail() {
+  const box_header = {
+    marginTop:"57px",
+    right:"0",
+    width:"100%",
+    height:"150px",
+    backgroundSize:"160px",
+    backgroundPosition:"right",
+    backgroundRepeat:"no-repeat"
+  }
+
+  const pokemon_img = {
+    display:"block",
+    marginTop:"-150px",
+    marginRight:"auto",
+    marginLeft:"auto",
+    height:"250px",
+    padding:"10px",
+  }
+  const pokemon_name = {
+    textAlign:"center",
+    textTransform:"capitalize",
+    fontWeight:"Bold",
+    marginTop:"-50px",
+    fontSize:"32px",
+  }
+
+  const section_text = {
+    fontWeight:"Bold",
+    fontSize:"24px",
+    margin:"20px 5px 5px"
+  }
+
+  const count_text = {
+    textAlign:"center",
+    marginTop:"15px",
+    fontWeight:"700"
+  }
+
   const pokename = useParams().name
   const countOwned = useCountOwnPokemon(pokename);
 
@@ -39,32 +77,15 @@ export default function PokemonDetail() {
     {!loading && data &&
       <Box>
         <Box
-          marginTop="57px"
-          right="0"
-          width="100%"
-          height="150px"
+          {...box_header}
           bgColor={PokemonColors[data.pokemon.types[0].type.name]}
-          backgroundImage={"url("+Pokeball+")"}
-          backgroundSize="160px"
-          backgroundPosition="right"
-          backgroundRepeat="no-repeat"
-        ></Box>
+          backgroundImage={"url("+Pokeball+")"}/>
         <Container maxW="960px" marginBottom="100px">
           <Image
-            display="block"
-            marginTop="-150px"
-            marginRight="auto"
-            marginLeft="auto"
-            height="250px"
-            padding="10px"
+            {...pokemon_img}
             src={data.pokemon.sprites.front_default} 
             fallbackSrc={Pokeball}/> 
-          <Text
-            textAlign="center"
-            textTransform="capitalize"
-            fontWeight="Bold"
-            marginTop="-50px"
-            fontSize="32px">
+          <Text {...pokemon_name}>
             {data.pokemon.name}
           </Text>
           <TypeList typeList={data.pokemon.types}></TypeList>
@@ -73,25 +94,10 @@ export default function PokemonDetail() {
               height={data.pokemon.height} 
               weight={data.pokemon.weight}>
             </WeightHeight>
-            <Text
-              textAlign="center"
-              marginTop="15px"
-              fontWeight="700">
-              {"Owned : "+countOwned}
-            </Text>
-            <Text 
-              fontWeight="Bold"
-              fontSize="24px"
-              margin="20px 5px 5px">
-              Stats
-            </Text>
+            <Text {...count_text}> {"Owned : "+countOwned} </Text>
+            <Text {...section_text}> Stats </Text>
             <StatList statList={data.pokemon.stats}></StatList>
-            <Text 
-              fontWeight="Bold"
-              fontSize="24px"
-              margin="20px 5px 5px">
-              Moves
-            </Text>
+            <Text {...section_text}> Moves </Text>
             <MovesTable movesList={data.pokemon.moves}></MovesTable>
           </Container>
         </Container>

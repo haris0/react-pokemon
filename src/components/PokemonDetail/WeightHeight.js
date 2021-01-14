@@ -7,14 +7,16 @@ import {
 } from '@chakra-ui/react'
 
 export default function WeightHeaight({height, weight}) {
+  const heigt_box = {
+    margin:"5px",
+    boxShadow:"inset 0 0 0 1px #e1e1e1",
+    borderRadius:"5px",
+    padding:"20px",
+    textAlign:"center",
+  }
   return (
     <div>
-      <StatGroup 
-        margin="5px" 
-        boxShadow="inset 0 0 0 1px #e1e1e1"
-        borderRadius="5px"
-        padding="20px"
-        textAlign="center">
+      <StatGroup {...heigt_box}>
         <Stat position="initial">
           <StatLabel >Height</StatLabel>
           <StatNumber >{height+'"'}</StatNumber>

@@ -9,6 +9,34 @@ import {GET_POKEMONS} from '../queries/queriesList'
 import {useMyPokemonList} from '../context'
 
 export default function WildPokemonList() {
+
+  const container_style = {
+    maxW:"960px",
+    marginTop:"75px",
+    marginBottom:"16px"
+  }
+  const heading_style = {
+    as:"h2",
+    color:"#2E3131",
+    textAlign:"center"
+  }
+
+  const grid_style = {
+    padding:"15px",
+    marginTop:"20px",
+    spacing:"20px"
+  }
+
+  const icon_style = {
+    marginRight:"10px",
+    bg:"#23CBA7",
+    boxShadow:"base",
+    colorScheme:"teal",
+    borderRadius:"full",
+    width:"50px",
+    height:"50px"
+  }
+
   const myPokemonList = useMyPokemonList();
   const { loading, error, data, fetchMore } = useQuery(GET_POKEMONS, {
     variables: {
@@ -19,8 +47,8 @@ export default function WildPokemonList() {
 
   return (
     <>
-      <Container maxW="960px" marginTop="75px" marginBottom="16px">
-        <Heading as="h2" color="#2E3131" textAlign="center">Wild Pokemon</Heading>
+      <Container {...container_style}>
+        <Heading {...heading_style}>Wild Pokemon</Heading>
         {loading && 
           <SimpleGrid columns={[2, null, 5]} marginTop="30px" spacing="20px">
             <Skeleton height="100px" />
@@ -33,7 +61,7 @@ export default function WildPokemonList() {
         {error && "Error Load Data"}
         {!loading && data &&
           <div>
-            <SimpleGrid columns={[2, null, 5]} padding="15px" marginTop="20px" spacing="20px">
+            <SimpleGrid columns={[2, null, 5]} {...grid_style}>
               {data.pokemons.results.map(pokemon => (
                 <WildCardPokemon key={pokemon.name} pokemon={pokemon}></WildCardPokemon>
               ))}
@@ -44,31 +72,24 @@ export default function WildPokemonList() {
         {!loading &&
           data &&
           <Box textAlign="right">
-            <IconButton
-            marginRight="10px" 
-            bg="#23CBA7" 
-            boxShadow="base" 
-            colorScheme="teal"
-            borderRadius="full"
-            width="50px"
-            height="50px"
-            icon={<ArrowDownIcon w={6} h={6}/>}
-            onClick={()=>{
-              fetchMore({
-                variables: { 
-                  limit: 20,
-                  offset: data.pokemons.nextOffset,
-                 },
-                updateQuery: (previousResult, { fetchMoreResult }) => {
-                  console.log(previousResult)
-                  console.log(fetchMoreResult)
-                  fetchMoreResult.pokemons.results = [
-                    ...previousResult.pokemons.results,
-                    ...fetchMoreResult.pokemons.results
-                  ];
-                  return fetchMoreResult;
-                },
-              })
+            <IconButton {...icon_style}
+              icon={<ArrowDownIcon w={6} h={6}/>}
+              onClick={()=>{
+                fetchMore({
+                  variables: { 
+                    limit: 20,
+                    offset: data.pokemons.nextOffset,
+                  },
+                  updateQuery: (previousResult, { fetchMoreResult }) => {
+                    console.log(previousResult)
+                    console.log(fetchMoreResult)
+                    fetchMoreResult.pokemons.results = [
+                      ...previousResult.pokemons.results,
+                      ...fetchMoreResult.pokemons.results
+                    ];
+                    return fetchMoreResult;
+                  },
+                })
             }}/>
           </Box>
           }

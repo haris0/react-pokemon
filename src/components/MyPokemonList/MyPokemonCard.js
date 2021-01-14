@@ -19,61 +19,103 @@ import {
 } from '@chakra-ui/react'
 
 export default function MyPokemonCard({pokemon}) {
+  const outer_box = {
+    display:"flex",
+    flexDir:"column",
+    boxShadow:"base",
+    rounded:"md",
+    backgroundSize:"80%",
+    backgroundPosition:"center",
+    backgroundRepeat:"no-repeat",
+  }
+
+  const pokemon_nickname = {
+    fontWeight:"bold",
+    lineHeight:"tight",
+    textTransform:"capitalize",
+    textAlign:"center",
+    padding:"12px 12px 0px 12px",
+    color:"White"
+  }
+
+  const pokemon_name = {
+    textAlign:"center",
+    color:"white",
+    marginTop:"-5px",
+    textTransform:"capitalize",
+    fontSize:"14px"    
+  }
+
+  const pokemon_img = {
+    width:"90%",
+    display:"block",
+    margin:"auto"
+  }
+
+  const tag_release = {
+    width:"100%",
+    bgColor:"white",
+    borderRadius:"0px 0px 5px 5px"
+  }
+
+  const release_text = {
+    width:"100%",
+    textAlign:"center",
+    fontWeight:"bold",
+    lineHeight:"tight",
+    textTransform:"capitalize",
+    padding:"10px",
+    color:"#2E3131"
+  }
+
+  const drawer_container = {
+    maxW:"960px",
+    paddingLeft:"0px",
+    paddingRight:"0px"
+  }
+  const drawer_container2 = {
+    paddingLeft:"0px",
+    paddingRight:"0px", 
+    textAlign:"center"
+  }
+
+  const confirm_text = {
+    fontSize:"18px",
+    fontWeight:"Bold",
+    textTransform:"capitalize"
+  }
+
+  const confirm_button = {
+    margin:"10px",
+    width:"100px"
+  }
+
   const removeMyPokemon = useRemoveMyPokemonList()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
     <div>
       <Box
-        display="flex"
-        flexDir="column"
-        boxShadow="base" 
-        rounded="md"
+        {...outer_box}
         bgColor={PokemonColors[pokemon.type[0]]}
         backgroundImage={"url("+Pokeball+")"}
-        backgroundSize="80%"
-        backgroundPosition="center"
-        backgroundRepeat="no-repeat"
         key={pokemon.nickName}>
         <Link to={"/detail/" + pokemon.name}>
           <Box>
-            <Text 
-            fontWeight="bold" 
-            lineHeight="tight"
-            textTransform="capitalize"
-            textAlign="center"
-            padding="12px 12px 0px 12px"
-            color="White">
-            {pokemon.nickName}
-          </Text>
-          <Text 
-            textAlign="center"
-            color="white"
-            marginTop="-5px"
-            textTransform="capitalize"
-            fontSize="14px">
+            <Text {...pokemon_nickname}>
+              {pokemon.nickName}
+            </Text>
+          <Text {...pokemon_name}>
             {"("+pokemon.name+")"}
           </Text>
-          <Image
-            width="90%"
-            display="block"
-            margin="auto"
+          <Image {...pokemon_img}
             src={pokemon.img}
             fallbackSrc={PokeballG}/>
           </Box>
         </Link>
-        <Box 
-          cursor="pointer"
-          onClick={onOpen}>
-          <Tag width="100%" bgColor="white" borderRadius="0px 0px 5px 5px">
-            <Text
-              width="100%"
-              textAlign="center"
-              fontWeight="bold" 
-              lineHeight="tight"
-              textTransform="capitalize"
-              padding="10px"
-              color="#2E3131">
+        <Box cursor="pointer" onClick={onOpen}>
+          <Tag {...tag_release}>
+            <Text {...release_text}>
               Release
             </Text>
           </Tag>
@@ -82,21 +124,18 @@ export default function MyPokemonCard({pokemon}) {
           <DrawerOverlay heigth='100% !important' />
           <DrawerContent heigth='100% !important'>
             <DrawerBody>
-              <Container maxW="960px" paddingLeft="0px" paddingRight="0px">
-                <Container paddingLeft="0px" paddingRight="0px" textAlign="center">
+              <Container {...drawer_container}>
+                <Container {...drawer_container2}>
                   <Box margin="20px 10px">
                     <>
-                      <Text
-                        fontSize="18px"
-                        fontWeight="Bold"
-                        textTransform="capitalize">
+                      <Text {...confirm_text}>
                         {"Do You Want Release " + pokemon.nickName + "?"}
                       </Text>
                       <Box marginTop="10px">
-                        <Button margin="10px" width="100px" colorScheme="teal" onClick={()=>{
+                        <Button {...confirm_button} colorScheme="teal" onClick={()=>{
                           removeMyPokemon(pokemon.nickName)
                         }}>Yes</Button>
-                        <Button margin="10px" width="100px" colorScheme="red" onClick={onClose}>No</Button>
+                        <Button {...confirm_button} colorScheme="red" onClick={onClose}>No</Button>
                       </Box>
                     </>
                   </Box>
