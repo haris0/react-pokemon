@@ -36,7 +36,7 @@ export default function MyPokemonButton({number}) {
     <Flex {...footer_flex}>
     <Box margin="auto">
       <Flex align="center">
-        <Link to="/caught">
+        <Link to="/mypokemon">
           <Button {...pokemon_button}
             leftIcon={<Image src={Pokeball} height="23px" width="23px"/>}>
             My Pokemon

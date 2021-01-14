@@ -14,7 +14,7 @@ import PokeballG from '../assets/PokeballG.png'
 export default function MyPokemonList() {
   const container_style = {
     maxW:"960px",
-    marginTop:"75px",
+    marginTop:"85px",
     marginBottom:"16px"
   }
 

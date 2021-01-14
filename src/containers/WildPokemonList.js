@@ -12,7 +12,7 @@ export default function WildPokemonList() {
 
   const container_style = {
     maxW:"960px",
-    marginTop:"75px",
+    marginTop:"85px",
     marginBottom:"16px"
   }
   const heading_style = {
