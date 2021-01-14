@@ -49,6 +49,7 @@ export default function MyPokemonList() {
 
   useEffect(() => {
     localStorage.setItem('myPokemon', JSON.stringify(myPokemonList));
+    window.scrollTo(0, 0)
   }, [myPokemonList]);
 
   return (

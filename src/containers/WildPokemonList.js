@@ -52,6 +52,7 @@ export default function WildPokemonList() {
 
   useEffect(() => {
     setMyPokemonCount(myPokemonList.length)
+    window.scrollTo(0, 0);
   },[myPokemonList]);
 
   const { loading, error, data, fetchMore } = useQuery(GET_POKEMONS, {
