@@ -1,7 +1,7 @@
 import React from "react";
 import {Image, Flex} from "@chakra-ui/react";
 import Poketop from "../assets/Poketop.png";
-
+import { Link } from "react-router-dom";
 
 export default function Header(){
   const header_flex = {
@@ -22,11 +22,12 @@ export default function Header(){
   return (
     <Flex {...header_flex}>
       <Flex align="center" mr={5}>
+      <Link to="/">
         <Image
           width="120px"
           height="25px"
-          src={Poketop}
-        />
+          src={Poketop}/>
+        </Link>
       </Flex>
     </Flex>
   );
