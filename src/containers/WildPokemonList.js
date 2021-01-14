@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Heading} from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
 import MyPokemonButton from '../components/WildPokemonList/MyPokemonButton';
@@ -41,19 +41,25 @@ const icon_style = {
   height:"50px"
 }
 
+const scrollTop = () =>{
+  window.scrollTo({top: 0, behavior: 'smooth'});
+};
+
 export default function WildPokemonList() {
 
-  const myPokemonList = useMyPokemonList();
+  const myPokemonList = useMyPokemonList()
+  const [myPokemonCount, setMyPokemonCount] = useState("")
+
+  useEffect(() => {
+    setMyPokemonCount(myPokemonList.length)
+  },[myPokemonList]);
+
   const { loading, error, data, fetchMore } = useQuery(GET_POKEMONS, {
     variables: {
         limit: 20,
         offset: 1,
       },
   });
-
-  const scrollTop = () =>{
-    window.scrollTo({top: 0, behavior: 'smooth'});
- };
 
   return (
     <>
@@ -75,7 +81,7 @@ export default function WildPokemonList() {
               {data.pokemons.results.map(pokemon => (
                 <WildCardPokemon key={pokemon.name} pokemon={pokemon}></WildCardPokemon>
               ))}
-              <MyPokemonButton number={myPokemonList.length}/>
+              <MyPokemonButton number={myPokemonCount}/>
             </SimpleGrid>
           </div>
         }

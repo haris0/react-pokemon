@@ -15,7 +15,6 @@ const heigt_box = {
 }
 
 export default function WeightHeaight({height, weight}) {
-  
   return (
     <div>
       <StatGroup {...heigt_box}>

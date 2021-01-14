@@ -46,7 +46,6 @@ const no_pokemon_img = {
 export default function MyPokemonList() {
 
   const myPokemonList = useMyPokemonList();
-  console.log(myPokemonList)
 
   useEffect(() => {
     localStorage.setItem('myPokemon', JSON.stringify(myPokemonList));

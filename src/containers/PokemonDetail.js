@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import { useQuery } from '@apollo/client';
 import Pokeball from '../assets/Pokeball.png';
@@ -58,7 +58,12 @@ const count_text = {
 export default function PokemonDetail() {
 
   const pokename = useParams().name
-  const countOwned = useCountOwnPokemon(pokename);
+  const contextCount = useCountOwnPokemon(pokename);
+  const [count, setCount] = useState()
+
+  useEffect(()=>{
+    setCount(contextCount)
+  },[contextCount])
 
   const { loading, error, data } = useQuery(GET_POKEMON_DET, {
     variables: {
@@ -95,7 +100,7 @@ export default function PokemonDetail() {
               height={data.pokemon.height} 
               weight={data.pokemon.weight}>
             </WeightHeight>
-            <Text {...count_text}> {"Owned : "+countOwned} </Text>
+            <Text {...count_text}> {"Owned : "+count} </Text>
             <Text {...section_text}> Stats </Text>
             <StatList statList={data.pokemon.stats}></StatList>
             <Text {...section_text}> Moves </Text>
