@@ -7,13 +7,11 @@ import {Box,
 import { Link } from "react-router-dom";
 import Pokeball from '../../assets/Pokeball.png'
 import PokeballG from "../../assets/PokeballG.png";
-import {useMyPokemonList} from '../../context'
+import {useCountOwnPokemon} from '../../context';
 
 export default function Card({ pokemon }){
-  const myPokemonList = useMyPokemonList();
-  function countOwnPokemon(name) {
-    return myPokemonList.filter(x => x.name === name).length
-  }
+  const countOwned = useCountOwnPokemon(pokemon.name);
+  
   return (
     <Link to={"/detail/" + pokemon.name} key={pokemon.name}>
       <Box
@@ -53,7 +51,7 @@ export default function Card({ pokemon }){
               textTransform="capitalize"
               padding="10px"
               color="#2E3131">
-              {"Owened : "+countOwnPokemon(pokemon.name)}
+              {"Owened : "+countOwned}
             </Text>
           </Tag>
         </Box>

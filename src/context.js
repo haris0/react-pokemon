@@ -42,4 +42,9 @@ export const useRemoveMyPokemonList = () => {
   };
 }
 
+export const useCountOwnPokemon = (name) => {
+  const {myPokemonList} = useContext(MyPokemonContex)
+  return myPokemonList.filter(x => x.name === name).length;
+}
+
 export default MyPokemonContexProvider

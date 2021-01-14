@@ -15,9 +15,11 @@ import {
   Box,
   Image,
 } from '@chakra-ui/react'
+import {useCountOwnPokemon} from '../context';
 
 export default function PokemonDetail() {
   const pokename = useParams().name
+  const countOwned = useCountOwnPokemon(pokename);
 
   const { loading, error, data } = useQuery(GET_POKEMON_DET, {
     variables: {
@@ -62,14 +64,21 @@ export default function PokemonDetail() {
             textTransform="capitalize"
             fontWeight="Bold"
             marginTop="-50px"
-            fontSize="32px"
-          >{data.pokemon.name}</Text>
+            fontSize="32px">
+            {data.pokemon.name}
+          </Text>
           <TypeList typeList={data.pokemon.types}></TypeList>
           <Container paddingLeft="0px" paddingRight="0px">
             <WeightHeight 
               height={data.pokemon.height} 
               weight={data.pokemon.weight}>
             </WeightHeight>
+            <Text
+              textAlign="center"
+              marginTop="15px"
+              fontWeight="700">
+              {"Owned : "+countOwned}
+            </Text>
             <Text 
               fontWeight="Bold"
               fontSize="24px"
@@ -80,8 +89,7 @@ export default function PokemonDetail() {
             <Text 
               fontWeight="Bold"
               fontSize="24px"
-              margin="20px 5px 5px"
-            >
+              margin="20px 5px 5px">
               Moves
             </Text>
             <MovesTable movesList={data.pokemon.moves}></MovesTable>
