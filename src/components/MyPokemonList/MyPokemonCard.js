@@ -3,6 +3,7 @@ import Pokeball from '../../assets/Pokeball.png'
 import PokeballG from "../../assets/PokeballG.png";
 import {PokemonColors} from "../PokemonColors";
 import {useRemoveMyPokemonList} from '../../context'
+import { Link } from "react-router-dom";
 import {
   Container,
   Text,
@@ -33,31 +34,34 @@ export default function MyPokemonCard({pokemon}) {
         backgroundSize="80%"
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
-        key={pokemon.nickName}
-        >
-        <Text 
-          fontWeight="bold" 
-          lineHeight="tight"
-          textTransform="capitalize"
-          textAlign="center"
-          padding="12px 12px 0px 12px"
-          color="White">
-          {pokemon.nickName}
-        </Text>
-        <Text 
-          textAlign="center"
-          color="white"
-          marginTop="-5px"
-          textTransform="capitalize"
-          fontSize="14px">
-          {"("+pokemon.name+")"}
-        </Text>
-        <Image
-          width="90%"
-          display="block"
-          margin="auto"
-          src={pokemon.img}
-          fallbackSrc={PokeballG}/>
+        key={pokemon.nickName}>
+        <Link to={"/detail/" + pokemon.name}>
+          <Box>
+            <Text 
+            fontWeight="bold" 
+            lineHeight="tight"
+            textTransform="capitalize"
+            textAlign="center"
+            padding="12px 12px 0px 12px"
+            color="White">
+            {pokemon.nickName}
+          </Text>
+          <Text 
+            textAlign="center"
+            color="white"
+            marginTop="-5px"
+            textTransform="capitalize"
+            fontSize="14px">
+            {"("+pokemon.name+")"}
+          </Text>
+          <Image
+            width="90%"
+            display="block"
+            margin="auto"
+            src={pokemon.img}
+            fallbackSrc={PokeballG}/>
+          </Box>
+        </Link>
         <Box 
           cursor="pointer"
           onClick={onOpen}>
