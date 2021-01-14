@@ -11,7 +11,7 @@ import {
   HttpLink,
   InMemoryCache
 } from '@apollo/client'
-import MyPokemonContexProvider from './context'
+import MyPokemonContexProvider from './context/context'
 
 const breakpoints = createBreakpoints({
   sm: "320px",

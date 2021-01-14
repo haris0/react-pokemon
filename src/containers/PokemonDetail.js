@@ -15,7 +15,7 @@ import {
   Box,
   Image,
 } from '@chakra-ui/react'
-import {useCountOwnPokemon} from '../context';
+import {useCountOwnPokemon} from '../context/context';
 
 export default function PokemonDetail() {
   const box_header = {

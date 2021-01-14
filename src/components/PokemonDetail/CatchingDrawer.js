@@ -18,7 +18,7 @@ import {
   Flex,
   Image
 } from '@chakra-ui/react'
-import { useAddMyPokemonList, useMyPokemonList } from '../../context';
+import { useAddMyPokemonList, useMyPokemonList } from '../../context/context';
 import PokeballG from "../../assets/PokeballG.png";
 
 function getRandomItem() {

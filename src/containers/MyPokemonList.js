@@ -7,7 +7,7 @@ import {
   Image,
   SimpleGrid
 }from '@chakra-ui/react'
-import {useMyPokemonList} from '../context'
+import {useMyPokemonList} from '../context/context'
 import MyPokemonCard from '../components/MyPokemonList/MyPokemonCard'
 import PokeballG from '../assets/PokeballG.png'
 

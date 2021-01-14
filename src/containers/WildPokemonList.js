@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { ArrowDownIcon, ArrowUpIcon} from '@chakra-ui/icons';
 import {GET_POKEMONS} from '../queries/queriesList'
-import {useMyPokemonList} from '../context'
+import {useMyPokemonList} from '../context/context'
 
 export default function WildPokemonList() {
 

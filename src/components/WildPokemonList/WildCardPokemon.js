@@ -7,7 +7,7 @@ import {Box,
 import { Link } from "react-router-dom";
 import Pokeball from '../../assets/Pokeball.png'
 import PokeballG from "../../assets/PokeballG.png";
-import {useCountOwnPokemon} from '../../context';
+import {useCountOwnPokemon} from '../../context/context';
 
 export default function Card({ pokemon }){
   const outer_box = {

@@ -2,7 +2,7 @@ import React from 'react'
 import Pokeball from '../../assets/Pokeball.png'
 import PokeballG from "../../assets/PokeballG.png";
 import {PokemonColors} from "../PokemonColors";
-import {useRemoveMyPokemonList} from '../../context'
+import {useRemoveMyPokemonList} from '../../context/context'
 import { Link } from "react-router-dom";
 import {
   Container,
