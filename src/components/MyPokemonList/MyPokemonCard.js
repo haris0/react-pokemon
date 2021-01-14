@@ -24,7 +24,7 @@ export default function MyPokemonCard({pokemon}) {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
-    <div>
+    <div data-testid="myPokemonCard">
       <Box
         {...outer_box}
         bgColor={PokemonColors[pokemon.type[0]]}
