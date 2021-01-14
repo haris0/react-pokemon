@@ -157,7 +157,7 @@ export default function CatchingDrawer({ data }) {
                                 onClick={setFalseNickName}
                                 onChange={handleChange} />
                               {nickNameEmpty &&
-                                <FormHelperText color="red !important" textAlign="left">Nickname Harus Diisi</FormHelperText>
+                                <FormHelperText color="red !important" textAlign="left">Nickname must be filled</FormHelperText>
                               }
                             </FormControl>
                             <Button margin="20px 10px" width="100px" colorScheme="teal" onClick={savePokemon}>Save</Button>
