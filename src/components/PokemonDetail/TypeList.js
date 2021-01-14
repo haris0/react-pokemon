@@ -5,17 +5,6 @@ import {
 } from '@chakra-ui/react'
 import {PokemonColors} from "../PokemonColors";
 
-const type_box = {
-  textAlign:"center",
-  marginBottom:"10px"
-}
-
-const bedge_type = {
-  variant:"solid",
-  margin:"5px",
-  textTransform:"capitalize"
-}
-
 export default function TypeList({typeList}) {
   return (
     <div>
@@ -31,4 +20,15 @@ export default function TypeList({typeList}) {
       </Box>
     </div>
   )
+}
+
+const type_box = {
+  textAlign:"center",
+  marginBottom:"10px"
+}
+
+const bedge_type = {
+  variant:"solid",
+  margin:"5px",
+  textTransform:"capitalize"
 }

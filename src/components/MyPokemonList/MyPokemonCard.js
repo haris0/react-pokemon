@@ -18,6 +18,67 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 
+export default function MyPokemonCard({pokemon}) {
+
+  const removeMyPokemon = useRemoveMyPokemonList()
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  return (
+    <div>
+      <Box
+        {...outer_box}
+        bgColor={PokemonColors[pokemon.type[0]]}
+        backgroundImage={"url("+Pokeball+")"}
+        key={pokemon.nickName}>
+        <Link to={"/detail/" + pokemon.name}>
+          <Box>
+            <Text {...pokemon_nickname}>
+              {pokemon.nickName}
+            </Text>
+          <Text {...pokemon_name}>
+            {"("+pokemon.name+")"}
+          </Text>
+          <Image {...pokemon_img}
+            src={pokemon.img}
+            fallbackSrc={PokeballG}/>
+          </Box>
+        </Link>
+        <Box cursor="pointer" onClick={onOpen}>
+          <Tag {...tag_release}>
+            <Text {...release_text}>
+              Release
+            </Text>
+          </Tag>
+        </Box>
+        <Drawer placement="top" isOpen={isOpen}>
+          <DrawerOverlay heigth='100% !important' />
+          <DrawerContent heigth='100% !important'>
+            <DrawerBody>
+              <Container {...drawer_container}>
+                <Container {...drawer_container2}>
+                  <Box margin="20px 10px">
+                    <>
+                      <Text {...confirm_text}>
+                        {"Do You Want Release " + pokemon.nickName + "?"}
+                      </Text>
+                      <Box marginTop="10px">
+                        <Button {...confirm_button} colorScheme="teal" onClick={()=>{
+                          removeMyPokemon(pokemon.nickName)
+                        }}>Yes</Button>
+                        <Button {...confirm_button} colorScheme="red" onClick={onClose}>No</Button>
+                      </Box>
+                    </>
+                  </Box>
+                </Container>
+              </Container>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      </Box>
+    </div>
+  )
+}
+
 const outer_box = {
   display:"flex",
   flexDir:"column",
@@ -87,65 +148,4 @@ const confirm_text = {
 const confirm_button = {
   margin:"10px",
   width:"100px"
-}
-
-export default function MyPokemonCard({pokemon}) {
-
-  const removeMyPokemon = useRemoveMyPokemonList()
-  const { isOpen, onOpen, onClose } = useDisclosure()
-
-  return (
-    <div>
-      <Box
-        {...outer_box}
-        bgColor={PokemonColors[pokemon.type[0]]}
-        backgroundImage={"url("+Pokeball+")"}
-        key={pokemon.nickName}>
-        <Link to={"/detail/" + pokemon.name}>
-          <Box>
-            <Text {...pokemon_nickname}>
-              {pokemon.nickName}
-            </Text>
-          <Text {...pokemon_name}>
-            {"("+pokemon.name+")"}
-          </Text>
-          <Image {...pokemon_img}
-            src={pokemon.img}
-            fallbackSrc={PokeballG}/>
-          </Box>
-        </Link>
-        <Box cursor="pointer" onClick={onOpen}>
-          <Tag {...tag_release}>
-            <Text {...release_text}>
-              Release
-            </Text>
-          </Tag>
-        </Box>
-        <Drawer placement="top" isOpen={isOpen}>
-          <DrawerOverlay heigth='100% !important' />
-          <DrawerContent heigth='100% !important'>
-            <DrawerBody>
-              <Container {...drawer_container}>
-                <Container {...drawer_container2}>
-                  <Box margin="20px 10px">
-                    <>
-                      <Text {...confirm_text}>
-                        {"Do You Want Release " + pokemon.nickName + "?"}
-                      </Text>
-                      <Box marginTop="10px">
-                        <Button {...confirm_button} colorScheme="teal" onClick={()=>{
-                          removeMyPokemon(pokemon.nickName)
-                        }}>Yes</Button>
-                        <Button {...confirm_button} colorScheme="red" onClick={onClose}>No</Button>
-                      </Box>
-                    </>
-                  </Box>
-                </Container>
-              </Container>
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
-      </Box>
-    </div>
-  )
 }

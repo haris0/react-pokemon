@@ -6,22 +6,6 @@ import {
   Grid,
 } from '@chakra-ui/react'
 
-const progrs_style = {
-  marginTop:"5px",
-  position:"inherit",
-  colorScheme:"teal",
-  size:"xs"
-}
-
-const stat_value = {
-  textTransform:"uppercase",
-  textAlign:"right"
-}
-
-const stat_name = {
-  textTransform:"uppercase"
-}
-
 export default function StatList({statList}) {
   
   return (
@@ -43,4 +27,20 @@ export default function StatList({statList}) {
       </Box>
     </div>
   )
+}
+
+const progrs_style = {
+  marginTop:"5px",
+  position:"inherit",
+  colorScheme:"teal",
+  size:"xs"
+}
+
+const stat_value = {
+  textTransform:"uppercase",
+  textAlign:"right"
+}
+
+const stat_name = {
+  textTransform:"uppercase"
 }

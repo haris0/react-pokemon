@@ -9,33 +9,6 @@ import Pokeball from '../../assets/Pokeball.png'
 import PokeballG from "../../assets/PokeballG.png";
 import {useCountOwnPokemon} from '../../context/context';
 
-const outer_box = {
-  display:"flex",
-  flexDir:"column",
-  boxShadow:"base",
-  rounded:"md",
-  cursor:"pointer",
-  bgColor:"lightgray",
-  backgroundSize:"80%",
-  backgroundPosition:"center",
-  backgroundRepeat:"no-repeat",
-}
-
-const pokemon_name = {
-  fontWeight:"bold",
-  lineHeight:"tight",
-  textTransform:"capitalize",
-  textAlign:"center",
-  padding:"12px 12px 0px 12px",
-  color:"White"   
-}
-
-const pokemon_img = {
-  width:"90%",
-  display:"block",
-  margin:"auto"
-}
-
 const tag_owned = {
   width:"100%",
   bgColor:"white",
@@ -78,4 +51,31 @@ export default function Card({ pokemon }){
       </Box>
     </Link>
   )
+}
+
+const outer_box = {
+  display:"flex",
+  flexDir:"column",
+  boxShadow:"base",
+  rounded:"md",
+  cursor:"pointer",
+  bgColor:"lightgray",
+  backgroundSize:"80%",
+  backgroundPosition:"center",
+  backgroundRepeat:"no-repeat",
+}
+
+const pokemon_name = {
+  fontWeight:"bold",
+  lineHeight:"tight",
+  textTransform:"capitalize",
+  textAlign:"center",
+  padding:"12px 12px 0px 12px",
+  color:"White"   
+}
+
+const pokemon_img = {
+  width:"90%",
+  display:"block",
+  margin:"auto"
 }

@@ -3,6 +3,26 @@ import {Box, Button, Flex, Image} from '@chakra-ui/react';
 import { Link } from "react-router-dom";
 import Pokeball from '../../assets/Pokeball.png'
 
+export default function MyPokemonButton({number}) {
+  return (
+    <Flex {...footer_flex}>
+    <Box margin="auto">
+      <Flex align="center">
+        <Link to="/mypokemon">
+          <Button {...pokemon_button}
+            leftIcon={<Image src={Pokeball} height="23px" width="23px"/>}>
+            My Pokemon
+            <Box {...count_box}>
+              {number}
+            </Box>
+          </Button>
+        </Link>
+      </Flex>
+    </Box>
+    </Flex>
+  )
+}
+
 const footer_flex = {
   justify:"space-between",
   overflow:"hidden",
@@ -29,24 +49,4 @@ const count_box = {
   height:"25px",
   bgColor:"#2E3131",
   borderRadius:"full"
-}
-
-export default function MyPokemonButton({number}) {
-  return (
-    <Flex {...footer_flex}>
-    <Box margin="auto">
-      <Flex align="center">
-        <Link to="/mypokemon">
-          <Button {...pokemon_button}
-            leftIcon={<Image src={Pokeball} height="23px" width="23px"/>}>
-            My Pokemon
-            <Box {...count_box}>
-              {number}
-            </Box>
-          </Button>
-        </Link>
-      </Flex>
-    </Box>
-    </Flex>
-  )
 }
