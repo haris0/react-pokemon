@@ -6,9 +6,10 @@ import WildCardPokemon from '../components/WildCardPokemon'
 import {Box, Skeleton, IconButton, SimpleGrid} from '@chakra-ui/react';
 import { ArrowDownIcon} from '@chakra-ui/icons';
 import {GET_POKEMONS} from '../queries/queriesList'
+import {useMyPokemonList} from '../context'
 
 export default function PokemonList() {
-    
+  const myPokemonList = useMyPokemonList();
   const { loading, error, data, fetchMore } = useQuery(GET_POKEMONS, {
     variables: {
         limit: 20,
@@ -18,10 +19,10 @@ export default function PokemonList() {
 
   return (
     <>
-      <Container maxW="960px" marginTop="75px" marginBottom="15px">
+      <Container maxW="960px" marginTop="75px" marginBottom="16px">
         <Heading as="h2" color="#2E3131" textAlign="center">Wild Pokemon</Heading>
         {loading && 
-          <SimpleGrid columns={[1, null, 5]} marginTop="30px" spacing="20px">
+          <SimpleGrid columns={[2, null, 5]} marginTop="30px" spacing="20px">
             <Skeleton height="100px" />
             <Skeleton height="100px" />
             <Skeleton height="100px" />
@@ -32,11 +33,11 @@ export default function PokemonList() {
         {error && "Error Load Data"}
         {!loading && data &&
           <div>
-            <SimpleGrid columns={[1, null, 5]} padding="15px" marginTop="20px" spacing="20px">
+            <SimpleGrid columns={[2, null, 5]} padding="15px" marginTop="20px" spacing="20px">
               {data.pokemons.results.map(pokemon => (
-                <WildCardPokemon pokemon={pokemon}></WildCardPokemon>
+                <WildCardPokemon key={pokemon.name} pokemon={pokemon}></WildCardPokemon>
               ))}
-              <MyListButton/>
+              <MyListButton number={myPokemonList.length}/>
             </SimpleGrid>
           </div>
         }

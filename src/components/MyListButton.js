@@ -3,7 +3,7 @@ import {Box, Button, Flex, Image} from '@chakra-ui/react';
 import { Link } from "react-router-dom";
 import Pokeball from '../assets/Pokeball.png'
 
-export default function MyListButton() {
+export default function MyListButton({number}) {
   return (
     <Flex
       justify="space-between"
@@ -23,10 +23,18 @@ export default function MyListButton() {
               boxShadow="base"
               colorScheme="teal"
               borderRadius="full"
-              padding="25px"
+              padding="25px 15px"
               leftIcon={<Image src={Pokeball} height="23px" width="23px"/>}
               >My Pokemon
-
+              <Box
+                marginLeft="10px"
+                lineHeight="24px"
+                width="25px"
+                height="25px"
+                bgColor="#2E3131"
+                borderRadius="full">
+                {number}
+              </Box>
           </Button>
         </Link>
       </Flex>
