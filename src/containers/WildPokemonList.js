@@ -3,8 +3,15 @@ import { Container, Heading} from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
 import MyPokemonButton from '../components/WildPokemonList/MyPokemonButton';
 import WildCardPokemon from '../components/WildPokemonList/WildCardPokemon'
-import {Box, Skeleton, IconButton, SimpleGrid} from '@chakra-ui/react';
-import { ArrowDownIcon} from '@chakra-ui/icons';
+import {
+  Box,
+  Skeleton, 
+  IconButton, 
+  SimpleGrid,
+  Spacer,
+  Flex
+} from '@chakra-ui/react';
+import { ArrowDownIcon, ArrowUpIcon} from '@chakra-ui/icons';
 import {GET_POKEMONS} from '../queries/queriesList'
 import {useMyPokemonList} from '../context'
 
@@ -28,7 +35,6 @@ export default function WildPokemonList() {
   }
 
   const icon_style = {
-    marginRight:"10px",
     bg:"#23CBA7",
     boxShadow:"base",
     colorScheme:"teal",
@@ -44,6 +50,10 @@ export default function WildPokemonList() {
         offset: 1,
       },
   });
+
+  const scrollTop = () =>{
+    window.scrollTo({top: 0, behavior: 'smooth'});
+ };
 
   return (
     <>
@@ -71,28 +81,38 @@ export default function WildPokemonList() {
         }
         {!loading &&
           data &&
-          <Box textAlign="right">
-            <IconButton {...icon_style}
-              icon={<ArrowDownIcon w={6} h={6}/>}
-              onClick={()=>{
-                fetchMore({
-                  variables: { 
-                    limit: 20,
-                    offset: data.pokemons.nextOffset,
-                  },
-                  updateQuery: (previousResult, { fetchMoreResult }) => {
-                    console.log(previousResult)
-                    console.log(fetchMoreResult)
-                    fetchMoreResult.pokemons.results = [
-                      ...previousResult.pokemons.results,
-                      ...fetchMoreResult.pokemons.results
-                    ];
-                    return fetchMoreResult;
-                  },
-                })
-            }}/>
-          </Box>
-          }
+          <Flex>
+            <Box>
+              <IconButton {...icon_style}
+                marginLeft="10px"
+                icon={<ArrowUpIcon w={6} h={6}/>}
+                onClick={scrollTop}/>
+            </Box>
+            <Spacer />
+            <Box>
+              <IconButton {...icon_style} 
+                marginRight="10px"
+                icon={<ArrowDownIcon w={6} h={6}/>}
+                onClick={()=>{
+                  fetchMore({
+                    variables: { 
+                      limit: 20,
+                      offset: data.pokemons.nextOffset,
+                    },
+                    updateQuery: (previousResult, { fetchMoreResult }) => {
+                      console.log(previousResult)
+                      console.log(fetchMoreResult)
+                      fetchMoreResult.pokemons.results = [
+                        ...previousResult.pokemons.results,
+                        ...fetchMoreResult.pokemons.results
+                      ];
+                      return fetchMoreResult;
+                    },
+                  })
+                }}/>
+            </Box>
+          </Flex>
+        }
       </Container>
     </>
   );
