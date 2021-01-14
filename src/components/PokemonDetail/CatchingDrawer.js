@@ -33,7 +33,8 @@ export default function CatchingDrawer({ data }) {
   const [firsTry, setFirsTry] = useState(true);
   const [success, setSuccess] = useState(false);
   const [nickName, setNickNaem] = useState("")
-  const [nickNameEmpty, setNickNameEmpty] = useState(false)
+  const [nickNameError, setNickNameError] = useState(false)
+  const [nickNameMsg, setNickNameMsg] = useState("")
   const handleChange = (event) => setNickNaem(event.target.value)
 
   const myPokemonList = useMyPokemonList();
@@ -53,7 +54,7 @@ export default function CatchingDrawer({ data }) {
     setFirsTry(true)
     setSuccess(false)
     setNickNaem("")
-    setNickNameEmpty(false)
+    setNickNameError(false)
   }
 
   function closeCatching() {
@@ -62,34 +63,51 @@ export default function CatchingDrawer({ data }) {
   }
 
   function setFalseNickName() {
-    setNickNameEmpty(false)
+    setNickNameError(false)
   }
 
   useEffect(() => {
     localStorage.setItem('myPokemon', JSON.stringify(myPokemonList));
   }, [myPokemonList]);
 
+  function saveToast() {
+    toast({
+      position: "top",
+      title: nickName + " Saved",
+      status: "success",
+      duration: 3000,
+    })
+  }
+
+  function generateCaught() {
+    const pekemonCaught = {
+      nickName: nickName,
+      name: data.pokemon.name,
+      img: data.pokemon.sprites.front_default,
+      type: data.pokemon.types.map(type => (type.type.name))
+    }
+    return pekemonCaught
+  }
+
+  function isNickNameExist(nickName) {
+    return (myPokemonList.some(el => el.nickName === nickName))
+  }
+
   const toast = useToast()
   function savePokemon() {
     if (nickName === "") {
-      setNickNameEmpty(true)
-    } else {
-      onClose()
+      setNickNameError(true)
+      setNickNameMsg("Nickname must be filled")
+    } else if(isNickNameExist(nickName)){
+      setNickNameError(true)
+      setNickNameMsg("Nickname must be Unique")
+    }else{
       setDefault()
-      const pekemonCaught = {
-        nickName: nickName,
-        name: data.pokemon.name,
-        img: data.pokemon.sprites.front_default,
-        type: data.pokemon.types.map(type => (type.type.name))
-      }
+      const pekemonCaught = generateCaught()
       addMyPokemon(pekemonCaught)
       console.log(pekemonCaught)
-      toast({
-        position: "top",
-        title: nickName + " Saved",
-        status: "success",
-        duration: 3000,
-      })
+      onClose()
+      saveToast(nickName)
     }
   }
   return (
@@ -156,8 +174,10 @@ export default function CatchingDrawer({ data }) {
                                 value={nickName}
                                 onClick={setFalseNickName}
                                 onChange={handleChange} />
-                              {nickNameEmpty &&
-                                <FormHelperText color="red !important" textAlign="left">Nickname must be filled</FormHelperText>
+                              {nickNameError &&
+                                <FormHelperText color="red !important" textAlign="left">
+                                  {nickNameMsg}
+                                </FormHelperText>
                               }
                             </FormControl>
                             <Button margin="20px 10px" width="100px" colorScheme="teal" onClick={savePokemon}>Save</Button>
