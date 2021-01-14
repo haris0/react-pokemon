@@ -8,7 +8,7 @@ import {
   SimpleGrid
 }from '@chakra-ui/react'
 import {useMyPokemonList} from '../context'
-import MyPokemonCard from '../components/MyPokemonCard'
+import MyPokemonCard from '../components/MyPokemonList/MyPokemonCard'
 import PokeballG from '../assets/PokeballG.png'
 
 export default function MyPokemonList() {

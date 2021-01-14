@@ -2,11 +2,11 @@ import React from 'react'
 import { useParams } from "react-router-dom";
 import { useQuery } from '@apollo/client';
 import Pokeball from '../assets/Pokeball.png';
-import MovesTable from "../components/MovesTable";
-import StatList from '../components/StatList'
-import WeightHeight from '../components/WeightHeight'
-import TypeList from '../components/TypeList'
-import CatchingDrawer from "../components/CatchingDrawer";
+import MovesTable from "../components/PokemonDetail/MovesTable";
+import StatList from '../components/PokemonDetail/StatList'
+import WeightHeight from '../components/PokemonDetail/WeightHeight'
+import TypeList from '../components/PokemonDetail/TypeList'
+import CatchingDrawer from "../components/PokemonDetail/CatchingDrawer";
 import {PokemonColors} from "../components/PokemonColors";
 import {GET_POKEMON_DET} from '../queries/queriesList'
 import {

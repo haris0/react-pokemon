@@ -1,9 +1,9 @@
 import React from 'react'
 import {Box, Button, Flex, Image} from '@chakra-ui/react';
 import { Link } from "react-router-dom";
-import Pokeball from '../assets/Pokeball.png'
+import Pokeball from '../../assets/Pokeball.png'
 
-export default function MyListButton({number}) {
+export default function MyPokemonButton({number}) {
   return (
     <Flex
       justify="space-between"

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Container, Heading} from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
-import MyListButton from '../components/MyListButton';
-import WildCardPokemon from '../components/WildCardPokemon'
+import MyPokemonButton from '../components/WildPokemonList/MyPokemonButton';
+import WildCardPokemon from '../components/WildPokemonList/WildCardPokemon'
 import {Box, Skeleton, IconButton, SimpleGrid} from '@chakra-ui/react';
 import { ArrowDownIcon} from '@chakra-ui/icons';
 import {GET_POKEMONS} from '../queries/queriesList'
 import {useMyPokemonList} from '../context'
 
-export default function PokemonList() {
+export default function WildPokemonList() {
   const myPokemonList = useMyPokemonList();
   const { loading, error, data, fetchMore } = useQuery(GET_POKEMONS, {
     variables: {
@@ -37,7 +37,7 @@ export default function PokemonList() {
               {data.pokemons.results.map(pokemon => (
                 <WildCardPokemon key={pokemon.name} pokemon={pokemon}></WildCardPokemon>
               ))}
-              <MyListButton number={myPokemonList.length}/>
+              <MyPokemonButton number={myPokemonList.length}/>
             </SimpleGrid>
           </div>
         }

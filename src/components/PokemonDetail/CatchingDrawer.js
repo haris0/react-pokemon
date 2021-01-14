@@ -18,8 +18,8 @@ import {
   Flex,
   Image
 } from '@chakra-ui/react'
-import { useAddMyPokemonList, useMyPokemonList } from '../context';
-import PokeballG from "../assets/PokeballG.png";
+import { useAddMyPokemonList, useMyPokemonList } from '../../context';
+import PokeballG from "../../assets/PokeballG.png";
 
 function getRandomItem() {
   const arr = [1, 0]

@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from "./components/Header";
-import PokemonList from './containers/PokemonList';
+import WildPokemonList from './containers/WildPokemonList';
 import PokemonDetail from './containers/PokemonDetail'
 import MyPokemonList from './containers/MyPokemonList'
 import {
@@ -14,7 +14,7 @@ export default function AppRouter() {
     <Router>
       <Header/>
       <Switch>
-        <Route exact path="/" component={PokemonList}/>
+        <Route exact path="/" component={WildPokemonList}/>
         <Route exact path="/detail/:name" children={<PokemonDetail />}/>
         <Route exact path="/caught" component={MyPokemonList}/>
       </Switch>

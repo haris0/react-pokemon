@@ -1,31 +1,32 @@
-import React from 'react'
-import {
-  Box, 
-  Image, 
-  Tag, 
-  Text,
-} from '@chakra-ui/react'
-import Pokeball from '../assets/Pokeball.png'
-import PokeballG from "../assets/PokeballG.png";
-import {PokemonColors} from "../components/PokemonColors";
-import {useRemoveMyPokemonList} from '../context'
+import React from "react";
+import {Box, 
+        Image, 
+        Tag, 
+        Text, 
+} from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import Pokeball from '../../assets/Pokeball.png'
+import PokeballG from "../../assets/PokeballG.png";
+import {useMyPokemonList} from '../../context'
 
-export default function MyPokemonCard({pokemon}) {
-  const removeMyPokemon = useRemoveMyPokemonList()
-
+export default function Card({ pokemon }){
+  const myPokemonList = useMyPokemonList();
+  function countOwnPokemon(name) {
+    return myPokemonList.filter(x => x.name === name).length
+  }
   return (
-    <div>
+    <Link to={"/detail/" + pokemon.name} key={pokemon.name}>
       <Box
         display="flex"
         flexDir="column"
         boxShadow="base" 
         rounded="md"
-        bgColor={PokemonColors[pokemon.type[0]]}
+        cursor="pointer"
+        bgColor="lightgray"
         backgroundImage={"url("+Pokeball+")"}
         backgroundSize="80%"
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
-        key={pokemon.nickName}
         >
         <Text 
           fontWeight="bold" 
@@ -34,27 +35,15 @@ export default function MyPokemonCard({pokemon}) {
           textAlign="center"
           padding="12px 12px 0px 12px"
           color="White">
-          {pokemon.nickName}
-        </Text>
-        <Text 
-          textAlign="center"
-          color="white"
-          marginTop="-5px"
-          textTransform="capitalize"
-          fontSize="14px">
-          {"("+pokemon.name+")"}
+          {pokemon.name}
         </Text>
         <Image
           width="90%"
           display="block"
           margin="auto"
-          src={pokemon.img}
+          src={pokemon.image}
           fallbackSrc={PokeballG}/>
-        <Box 
-          cursor="pointer"
-          onClick={()=>{
-            removeMyPokemon(pokemon.nickName)
-          }}>
+        <Box>
           <Tag width="100%" bgColor="white" borderRadius="0px 0px 5px 5px">
             <Text
               width="100%"
@@ -64,11 +53,11 @@ export default function MyPokemonCard({pokemon}) {
               textTransform="capitalize"
               padding="10px"
               color="#2E3131">
-              Release
+              {"Owened : "+countOwnPokemon(pokemon.name)}
             </Text>
           </Tag>
         </Box>
       </Box>
-    </div>
+    </Link>
   )
 }

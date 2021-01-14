@@ -4,7 +4,7 @@ import {
   Badge,
 } from '@chakra-ui/react'
 
-import {PokemonColors} from "./PokemonColors";
+import {PokemonColors} from "../PokemonColors";
 
 export default function TypeList({typeList}) {
   return (
