@@ -1,8 +1,13 @@
 # React-Pokemon
 
-This application can display a list of wild Pokemon, the data used is sourced from [graphql-pokeapi](https://github.com/mazipan/graphql-pokeapi).
-This application can also display the details of each pokemon, on this page you can catch your own pokemon, you can catch the same pokemon multiple times and give different nicknames.
-You can see Pokemon that have been caught on my pokemon page.
+This application can display a list of wild Pokemon, the data used is sourced from [graphql-pokeapi](https://github.com/mazipan/graphql-pokeapi). This application can also display the details of each pokemon, on this page you can catch your own pokemon, you can catch the same pokemon multiple times and give different nicknames. You can see Pokemon that have been caught on my pokemon page. You can see the demo app at [PokeTop](https://objective-engelbart-1c2d30.netlify.app/)
+
+## Preview
+![page1](./Preview1.png)
+
+![page2](./Preview2.png)
+
+![page3](./Preview3.png)
 
 ## Build Setup
 
