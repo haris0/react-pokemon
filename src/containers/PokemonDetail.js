@@ -105,6 +105,7 @@ const pokemon_img = {
   marginLeft:"auto",
   height:"250px",
   padding:"10px",
+  alt:"Pokemon"
 }
 const pokemon_name = {
   textAlign:"center",

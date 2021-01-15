@@ -66,13 +66,15 @@ export default function WildPokemonList() {
             <Box>
               <IconButton {...icon_style}
                 marginLeft="10px"
+                aria-label="Up"
                 icon={<ArrowUpIcon w={6} h={6}/>}
-                onClick={scrollTop}/>
+                onClick={scrollTop}></IconButton>
             </Box>
             <Spacer />
             <Box>
               <IconButton {...icon_style} 
                 marginRight="10px"
+                aria-label="Down"
                 icon={<ArrowDownIcon w={6} h={6}/>}
                 onClick={()=>{
                   fetchMore({
@@ -90,7 +92,7 @@ export default function WildPokemonList() {
                       return fetchMoreResult;
                     },
                   })
-                }}/>
+                }}></IconButton>
             </Box>
           </Flex>
         }
@@ -122,5 +124,5 @@ const icon_style = {
   colorScheme:"teal",
   borderRadius:"full",
   width:"50px",
-  height:"50px"
+  height:"50px",
 }

@@ -76,4 +76,5 @@ const no_pokemon_img = {
   padding:"50px",
   display:"block",
   margin:"auto",
+  alt:"No Pokemon"
 }

@@ -214,7 +214,8 @@ const img_button = {
   borderRadius:"full",
   bgColor:"white",
   cursor:"pointer",
-  height:"60px"
+  height:"60px",
+  alt:"Catch Pokemon"
 }
 
 const drawer_container = {

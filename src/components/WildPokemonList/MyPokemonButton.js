@@ -10,7 +10,7 @@ export default function MyPokemonButton({number}) {
       <Flex align="center">
         <Link to="/mypokemon">
           <Button {...pokemon_button}
-            leftIcon={<Image src={Pokeball} height="23px" width="23px"/>}>
+            leftIcon={<Image alt="Poke Ball" src={Pokeball} height="23px" width="23px"/>}>
             My Pokemon
             <Box {...count_box}>
               {number}

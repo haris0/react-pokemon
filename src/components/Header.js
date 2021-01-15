@@ -10,6 +10,7 @@ export default function Header(){
       <Flex align="center" mr={5}>
       <Link to="/">
         <Image
+          alt="Poketop"
           width="120px"
           height="25px"
           src={Poketop}/>

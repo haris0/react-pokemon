@@ -109,7 +109,8 @@ const pokemon_name = {
 const pokemon_img = {
   width:"90%",
   display:"block",
-  margin:"auto"
+  margin:"auto",
+  alt:"Pokemon"
 }
 
 const tag_release = {
