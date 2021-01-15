@@ -1,6 +1,6 @@
 import React from 'react'
 import Pokeball from '../../assets/Pokeball.png'
-import PokeballG from "../../assets/PokeballG.png";
+import PokeEgg from "../../assets/PokeEgg.png";
 import {PokemonColors} from "../PokemonColors";
 import {useRemoveMyPokemonList} from '../../context/context'
 import { Link } from "react-router-dom";
@@ -40,7 +40,7 @@ export default function MyPokemonCard({pokemon}) {
           </Text>
           <Image {...pokemon_img}
             src={pokemon.img}
-            fallbackSrc={PokeballG}/>
+            fallbackSrc={PokeEgg}/>
           </Box>
         </Link>
         <Box cursor="pointer" onClick={onOpen}>

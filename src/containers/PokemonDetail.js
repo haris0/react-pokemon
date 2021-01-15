@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import { useQuery } from '@apollo/client';
 import Pokeball from '../assets/Pokeball.png';
+import PokeEgg from '../assets/PokeEgg.png';
 import MovesTable from "../components/PokemonDetail/MovesTable";
 import StatList from '../components/PokemonDetail/StatList'
 import WeightHeight from '../components/PokemonDetail/WeightHeight'
@@ -65,7 +66,7 @@ export default function PokemonDetail() {
           <Image
             {...pokemon_img}
             src={data.pokemon.sprites.front_default} 
-            fallbackSrc={Pokeball}/> 
+            fallbackSrc={PokeEgg}/> 
           <Text {...pokemon_name}>
             {data.pokemon.name}
           </Text>

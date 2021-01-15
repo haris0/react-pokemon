@@ -6,7 +6,7 @@ import {Box,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import Pokeball from '../../assets/Pokeball.png'
-import PokeballG from "../../assets/PokeballG.png";
+import PokeEgg from "../../assets/PokeEgg.png";
 import {useCountOwnPokemon} from '../../context/context';
 
 const tag_owned = {
@@ -40,7 +40,7 @@ export default function Card({ pokemon }){
         <Image
           {...pokemon_img}
           src={pokemon.image}
-          fallbackSrc={PokeballG}/>
+          fallbackSrc={PokeEgg}/>
         <Box>
           <Tag {...tag_owned}>
             <Text {...owned_text}>
