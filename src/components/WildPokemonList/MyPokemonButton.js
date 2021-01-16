@@ -39,7 +39,8 @@ const pokemon_button = {
   boxShadow:"base",
   colorScheme:"teal",
   borderRadius:"full",
-  padding:"25px 15px",
+  height: "unset",
+  padding: "15px 16px"
 }
 
 const count_box = {
