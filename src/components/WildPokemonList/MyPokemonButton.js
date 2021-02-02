@@ -40,12 +40,12 @@ const pokemon_button = {
   colorScheme:"teal",
   borderRadius:"full",
   height: "unset",
-  padding: "15px 16px"
+  padding: "13px 16px"
 }
 
 const count_box = {
   marginLeft:"10px",
-  lineHeight:"24px",
+  lineHeight:"23px",
   width:"25px",
   height:"25px",
   bgColor:"#2E3131",
