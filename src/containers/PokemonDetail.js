@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, lazy } from 'react'
 import { useParams } from "react-router-dom";
 import { useQuery } from '@apollo/client';
 import Pokeball from '../assets/Pokeball.png';
 import PokeEgg from '../assets/PokeEgg.png';
-import MovesTable from "../components/PokemonDetail/MovesTable";
-import StatList from '../components/PokemonDetail/StatList'
-import WeightHeight from '../components/PokemonDetail/WeightHeight'
-import TypeList from '../components/PokemonDetail/TypeList'
-import CatchingDrawer from "../components/PokemonDetail/CatchingDrawer";
 import {PokemonColors} from "../components/PokemonColors";
 import {GET_POKEMON_DET} from '../queries/queriesList'
 import {
@@ -19,6 +14,12 @@ import {
   SkeletonText
 } from '@chakra-ui/react'
 import {useCountOwnPokemon} from '../context/context';
+
+const MovesTable = lazy(()=> import('../components/PokemonDetail/MovesTable'));
+const StatList = lazy(()=> import('../components/PokemonDetail/StatList'));
+const WeightHeight = lazy(()=> import('../components/PokemonDetail/WeightHeight'));
+const TypeList = lazy(()=> import('../components/PokemonDetail/TypeList'));
+const CatchingDrawer = lazy(()=> import('../components/PokemonDetail/CatchingDrawer'));
 
 export default function PokemonDetail() {
 

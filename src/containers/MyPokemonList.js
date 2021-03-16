@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, lazy} from 'react'
 import {
   Box,
   Container, 
@@ -8,8 +8,9 @@ import {
   SimpleGrid
 }from '@chakra-ui/react'
 import {useMyPokemonList} from '../context/context'
-import MyPokemonCard from '../components/MyPokemonList/MyPokemonCard'
 import PokeballG from '../assets/PokeballG.png'
+
+const MyPokemonCard = lazy(()=> import('../components/MyPokemonList/MyPokemonCard'));
 
 export default function MyPokemonList() {
 

@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy } from 'react';
 import { Container, Heading} from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
-import MyPokemonButton from '../components/WildPokemonList/MyPokemonButton';
-import WildCardPokemon from '../components/WildPokemonList/WildCardPokemon'
 import {
   Box,
   Skeleton, 
@@ -14,6 +12,9 @@ import {
 import { ArrowDownIcon, ArrowUpIcon} from '@chakra-ui/icons';
 import {GET_POKEMONS} from '../queries/queriesList'
 import {useMyPokemonList} from '../context/context'
+
+const MyPokemonButton = lazy(()=> import('../components/WildPokemonList/MyPokemonButton'));
+const WildCardPokemon = lazy(()=> import('../components/WildPokemonList/WildCardPokemon'));
 
 const scrollTop = () =>{
   window.scrollTo({top: 0, behavior: 'smooth'});
