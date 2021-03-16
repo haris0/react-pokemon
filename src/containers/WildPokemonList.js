@@ -25,17 +25,35 @@ export default function WildPokemonList() {
   const myPokemonList = useMyPokemonList()
   const [myPokemonCount, setMyPokemonCount] = useState("")
 
-  useEffect(() => {
-    setMyPokemonCount(myPokemonList.length)
-    window.scrollTo(0, 0);
-  },[myPokemonList]);
-
   const { loading, error, data, fetchMore } = useQuery(GET_POKEMONS, {
     variables: {
         limit: 20,
         offset: 1,
       },
   });
+
+  const handleLoadMore =()=>{
+    fetchMore({
+      variables: { 
+        limit: 20,
+        offset: data.pokemons.nextOffset,
+      },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        console.log(previousResult)
+        console.log(fetchMoreResult)
+        fetchMoreResult.pokemons.results = [
+          ...previousResult.pokemons.results,
+          ...fetchMoreResult.pokemons.results
+        ];
+        return fetchMoreResult;
+      },
+    })
+  }
+
+  useEffect(() => {
+    setMyPokemonCount(myPokemonList.length)
+    window.scrollTo(0, 0);
+  },[myPokemonList]);
 
   return (
     <>
@@ -77,23 +95,7 @@ export default function WildPokemonList() {
                 marginRight="10px"
                 aria-label="Down"
                 icon={<ArrowDownIcon w={6} h={6}/>}
-                onClick={()=>{
-                  fetchMore({
-                    variables: { 
-                      limit: 20,
-                      offset: data.pokemons.nextOffset,
-                    },
-                    updateQuery: (previousResult, { fetchMoreResult }) => {
-                      console.log(previousResult)
-                      console.log(fetchMoreResult)
-                      fetchMoreResult.pokemons.results = [
-                        ...previousResult.pokemons.results,
-                        ...fetchMoreResult.pokemons.results
-                      ];
-                      return fetchMoreResult;
-                    },
-                  })
-                }}></IconButton>
+                onClick={handleLoadMore}></IconButton>
             </Box>
           </Flex>
         }
